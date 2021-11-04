@@ -10,10 +10,9 @@
   "scripts": {
     "start:client": "yarn workspace client run start",
     "build:client": "yarn workspace client run build",
-    "run:client": "yarn workspace client run",
+
     "start:api": "yarn workspace api run start",
     "build:api": "yarn workspace api run build",
-    "run:api": "yarn workspace api run",
     "test:api": "yarn workspace api run test",
     "test:cov:api": "yarn workspace api run test:cov",
     "test:watch:api": "yarn workspace api run test:watch"

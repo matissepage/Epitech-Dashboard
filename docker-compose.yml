@@ -2,26 +2,38 @@ version: "3"
 
 services:
   api:
-    image: api_dashboard
-    build: ./docker/nest/
     container_name: api
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - BUILD_CONTEXT_DIR=api
+        - WORKDIR_ARG=api
+        - PORT_ARG=8080
+        - TYPE=nest
     ports:
       - "8080:8080"
     volumes:
-      - ./api/:/api
-    networks:
-      - backend
-
-  client:
-    image: client_dashboard
-    build: ./docker/react/
-    container_name: client
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./client/:/client
+      - "./api:/api"
     networks:
       - backend
   
+  client:
+    container_name: client
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - BUILD_CONTEXT_DIR=client
+        - WORKDIR_ARG=client
+        - PORT_ARG=3000
+        - TYPE=react
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./client:/client"
+    networks:
+      - backend
+
 networks:
     backend:
