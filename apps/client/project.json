@@ -40,6 +40,7 @@
       "executor": "@nrwl/web:dev-server",
       "options": {
         "buildTarget": "client:build",
+        "port": 3000,
         "hmr": true
       },
       "configurations": {
@@ -47,6 +48,19 @@
           "buildTarget": "client:build:production",
           "hmr": false
         }
+      }
+    },
+    "serveApp": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "nx run api:serve"
+          },
+          {
+            "command": "nx run client:serve"
+          }
+        ]
       }
     },
     "lint": {

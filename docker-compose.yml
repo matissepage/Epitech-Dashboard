@@ -1,0 +1,46 @@
+version: "3.8"
+
+networks:
+  corp:
+    driver: bridge
+
+services:
+  api-server:
+    container_name: api-server
+    build:
+      context: ./
+      cache_from:
+        - dashboard:nx-base
+      dockerfile: ./apps/api/Dockerfile
+      args:
+        NODE_ENV: "development"
+        BUILD_FLAG: ""
+    # image: api:nx-dev
+    ports:
+      - 8080:3333
+    environment:
+      NODE_ENV: "development"
+      # PORT: 4939
+    networks:
+      - corp
+    restart: on-failure
+
+  react-client:
+    container_name: react-client
+    build:
+      context: ./
+      # cache_from:
+      #   - nginx:1.19.2
+      dockerfile: ./apps/client/Dockerfile
+      args:
+        NODE_ENV: "development"
+        # BUILD_FLAG: ""
+    # image: client:nx-dev
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: "development"
+      # PORT: 4900
+    networks:
+      - corp
+    restart: on-failure
