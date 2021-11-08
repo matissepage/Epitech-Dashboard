@@ -3,9 +3,6 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test",
     "api:start": "yarn nx run api:serve",
     "api:lint": "yarn nx run api:lint",
     "api:test": "yarn nx run api:test",
