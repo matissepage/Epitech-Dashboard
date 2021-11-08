@@ -1,39 +1,46 @@
-version: "3"
-
-services:
-  api:
-    container_name: api
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        - BUILD_CONTEXT_DIR=api
-        - WORKDIR_ARG=api
-        - PORT_ARG=8080
-        - TYPE=nest
-    ports:
-      - "8080:8080"
-    volumes:
-      - "./api:/api"
-    networks:
-      - backend
-  
-  client:
-    container_name: client
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        - BUILD_CONTEXT_DIR=client
-        - WORKDIR_ARG=client
-        - PORT_ARG=3000
-        - TYPE=react
-    ports:
-      - "3000:3000"
-    volumes:
-      - "./client:/client"
-    networks:
-      - backend
+version: "3.8"
 
 networks:
-    backend:
+  corp:
+    driver: bridge
+
+services:
+  api-server:
+    container_name: api-server
+    build:
+      context: ./
+      cache_from:
+        - dashboard:nx-base
+      dockerfile: ./apps/api/Dockerfile
+      args:
+        NODE_ENV: "development"
+        BUILD_FLAG: ""
+    # image: api:nx-dev
+    ports:
+      - 8080:3333
+    environment:
+      NODE_ENV: "development"
+      # PORT: 4939
+    networks:
+      - corp
+    restart: on-failure
+
+  react-client:
+    container_name: react-client
+    build:
+      context: ./
+      # cache_from:
+      #   - nginx:1.19.2
+      dockerfile: ./apps/client/Dockerfile
+      args:
+        NODE_ENV: "development"
+        # BUILD_FLAG: ""
+    # image: client:nx-dev
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: "development"
+      # PORT: 4900
+    networks:
+      - corp
+    restart: on-failure
