@@ -1,21 +1,18 @@
-# FROM dashboard:nx-base AS builder
+FROM dashboard:nx-base AS builder
 
-# ARG NODE_ENV
-# ARG BUILD_FLAG
+ARG NODE_ENV
+ARG BUILD_FLAG
 
-# WORKDIR /app/builder
-# COPY . .
+WORKDIR /app/builder/
 
-# RUN npx nx build api ${BUILD_FLAG}
+COPY . .
+RUN npx nx build api ${BUILD_FLAG}
 
 FROM dashboard:nx-base
 
 WORKDIR /app
-# COPY --from=builder /app/builder ./
-COPY . .
+COPY --from=builder /app/builder/ ./
 
-ENV NODE_ENV=$NODE_ENV
+ENV NODE_ENV=${NODE_ENV}
 
-# CMD ["node", "./dist/apps/api/main.js"]
-EXPOSE 3333
-CMD [ "npx", "nx serve api" ]
+CMD ["node", "./dist/apps/api/main.js"]
