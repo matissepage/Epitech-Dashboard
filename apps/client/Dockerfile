@@ -1,32 +1,16 @@
-# FROM dashboard:nx-base AS builder
-
-# ARG NODE_ENV
-# # ARG BUILD_FLAG
-
-# WORKDIR /app/builder
-# COPY . .
-# # RUN npx nx serve client
-
-# EXPOSE 3000
-
-# CMD [ "npx", "nx", "serve", "client" ]
-
-FROM dashboard:nx-base
+FROM dashboard:nx-base AS builder
 
 ARG NODE_ENV
-# ARG BUILD_FLAG
+ARG BUILD_FLAG
 
-WORKDIR /app/builder
+WORKDIR /app/builder/
+
 COPY . .
-# RUN npx nx serve client
+RUN npx nx build client ${BUILD_FLAG}
 
-EXPOSE 3000
+FROM nginx:1.19.2
 
-CMD [ "npx", "nx", "serve", "client" ]
+WORKDIR /usr/share/nginx/html
 
-# FROM nginx:1.19.2
-
-# WORKDIR /usr/share/nginx/html
-
-# COPY --from=builder /app/builder/dist/apps/react-client ./
-# COPY --from=builder /app/builder/apps/react-client/nginx.conf /etc/nginx/nginx.conf
+COPY --from=builder /app/builder/dist/apps/client ./
+COPY --from=builder /app/builder/apps/client/nginx.conf /etc/nginx/nginx.conf
