@@ -7,10 +7,12 @@
     "api:lint": "yarn nx run api:lint",
     "api:test": "yarn nx run api:test",
     "api:build": "yarn nx run api:build",
+    "api:clean": "rm -rf ./dist/apps/api",
     "client:start": "yarn nx run client:serve",
     "client:lint": "yarn nx run client:lint",
     "client:build": "yarn nx run client:build",
     "client:test": "yarn nx run client:test",
+    "client:clean": "rm -rf ./dist/apps/client",
     "client-e2e:start": "yarn nx run client-e2e:e2e",
     "client-e2e:lint": "yarn nx run client-e2e:lint",
     "app:start": "yarn nx run client:serveApp"
