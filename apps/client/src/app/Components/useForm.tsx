@@ -15,7 +15,7 @@ const useForm = (callback: any, validate: any) => {
         password2: "",
     };
     const [values, setValues] = useState (userForm);
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState<IUserForm>(userForm);
     const [isSubmitting, setSubmitting] = useState(false);
 
     const handleChange = (e: any) => {
