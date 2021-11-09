@@ -100,13 +100,14 @@ export const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  &:h1 {
-    font-size: 1rem;
-    text-align: start;
-    width: 80%;
-    margin-bottom: 1rem;
-    color: #fff;
-  }
+`
+
+export const FormH1 = styled.h1`
+  font-size: 1rem;
+  text-align: start;
+  width: 80%;
+  margin-bottom: 1rem;
+  color: #fff;
 `
 
 export const FormInputs = styled.div`
