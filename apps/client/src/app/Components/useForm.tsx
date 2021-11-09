@@ -1,17 +1,25 @@
 import { useState, useEffect } from "react";
 
-const useForm = (callback, validate) => {
-    const [values, setValues] = useState ({
-        username:'',
-        email:'',
-        password:'',
-        password2:''
-    });
+export interface IUserForm {
+    username: string,
+    email: string,
+    password: string,
+    password2: string
+}
+
+const useForm = (callback: any, validate: any) => {
+    let userForm: IUserForm = {
+        username: "",
+        email: "",
+        password: "",
+        password2: "",
+    };
+    const [values, setValues] = useState (userForm);
     const [errors, setErrors] = useState({});
     const [isSubmitting, setSubmitting] = useState(false);
 
-    // a détaillé
-    const handleChange = e => {
+    const handleChange = (e: any) => {
+        console.log(e.target);
         const {name, value} = e.target
         setValues({
             ...values,
@@ -19,10 +27,11 @@ const useForm = (callback, validate) => {
         });
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
         setErrors(validate(values))
         setSubmitting(true);
+        callback(true);
     }
 
     useEffect (

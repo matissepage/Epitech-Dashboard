@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { ReactComponent as Logo } from './logo.svg';
-import Form from './Components/Form'
+import Form from './Components/Form/Form'
 import SignIn from './Pages/SignIn/FormSignIn'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
