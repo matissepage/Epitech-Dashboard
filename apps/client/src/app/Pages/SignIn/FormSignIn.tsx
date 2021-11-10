@@ -6,16 +6,8 @@ import * as Styled from '../../Components/Form/styled'
 import { IUserForm } from '../../Components/Form/useForm';
 
 export const FormSignIn = ({submitForm}: {submitForm:any}) => {
-  let {handleChange, values, handleSubmit, errors} = useForm(submitForm, validate);
-  if (errors === null) {
-    const tmp: IUserForm = {
-      username: "",
-      email: "",
-      password: "",
-      password2: "",
-    };
-    errors = tmp;
-  }
+  const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validate);
+
   return (
     <Styled.FormContainer>
       <Styled.CloseButton/>

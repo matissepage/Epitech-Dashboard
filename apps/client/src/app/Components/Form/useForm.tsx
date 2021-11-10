@@ -15,7 +15,7 @@ export const useForm = (callback: (submit: boolean) => void, validate: any) => {
         password2: "",
     };
     const [values, setValues] = useState (userForm);
-    const [errors, setErrors] = useState<IUserForm | null>(null);
+    const [errors, setErrors] = useState<IUserForm>(userForm);
     const [isSubmitting, setSubmitting] = useState(false);
 
     const handleChange = (e: any) => {
@@ -31,10 +31,7 @@ export const useForm = (callback: (submit: boolean) => void, validate: any) => {
         e.preventDefault();
         setErrors(validate(values))
         setSubmitting(true);
-        if (errors === null)
-            callback(true);
-        else
-            callback(false);
+        callback(true);
     }
 
     useEffect (
