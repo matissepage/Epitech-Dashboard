@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { ReactComponent as Logo } from './logo.svg';
 import { FormCreate } from './Components/Form/Form'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { HomePage } from './Pages/HomePage/HomePage';
 
 const StyledApp = styled.div`
   box-sizing: border-box;
@@ -23,6 +24,7 @@ export function App() {
                 <Route path='/signin' exact>
                   <FormCreate type="SignIn"/>
                 </Route>
+                <Route exact path='/home' component={HomePage} />
             </div>
             </>
         </Switch>
