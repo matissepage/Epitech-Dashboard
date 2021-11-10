@@ -15,6 +15,7 @@ export function App() {
     <StyledApp>
       <Router>
         <Switch>
+            <>
             <div className="App">
                 <Route path='/' exact>
                   <FormCreate type="SignUp"/>
@@ -23,6 +24,7 @@ export function App() {
                   <FormCreate type="SignIn"/>
                 </Route>
             </div>
+            </>
         </Switch>
     </Router>
     </StyledApp>

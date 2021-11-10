@@ -11,19 +11,15 @@ export default function validateInfo(values: { username: string; email: string; 
 
   if (!values.username.trim()) {
     errors.username = "Username is required"
-    console.log(errors.username)
   }
   
   if (!values.email) {
-    console.log('empty email');
     errors.email = "Email is required"
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
     errors.email = "Email adress is invalid"
   }
   
-  console.log(`this is my values ${JSON.stringify(values)}`);
   if (!values.password) {
-    console.log('empty password');
     errors.password = "Password is required"
   } else if (values.password.lenght < 5) {
     errors.password = "Password needs to be 5 characters or more."

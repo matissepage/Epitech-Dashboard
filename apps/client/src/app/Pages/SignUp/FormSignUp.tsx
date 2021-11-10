@@ -7,7 +7,6 @@ import { IUserForm } from '../../Components/Form/useForm';
 export const FormSignUp = ({submitForm}: {submitForm:any}) => {
   const {handleChange, values, handleSubmit, errors } = useForm(submitForm, validate);
 
-  console.log(`this is my errors ${JSON.stringify(errors)}`);
   return (
     <Styled.FormContentRight>
       <Styled.Form onSubmit={handleSubmit}>

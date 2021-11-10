@@ -19,7 +19,6 @@ export const useForm = (callback: (submit: boolean) => void, validate: any) => {
     const [isSubmitting, setSubmitting] = useState(false);
 
     const handleChange = (e: any) => {
-        console.log(e.target);
         const {name, value} = e.target
         setValues({
             ...values,
