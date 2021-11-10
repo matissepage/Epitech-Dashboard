@@ -1,11 +1,22 @@
 import React from 'react';
-import useForm from '../../Components/Form/useForm';
+import { useForm } from '../../Components/Form/useForm';
 import validate from '../../Components/Form/validateInfo';
-import * as Styled from '../../Components/Form/styled'
+import * as Styled from '../../Components/Form/styled';
+import { IUserForm } from '../../Components/Form/useForm';
 
-const FormSignUp = ({submitForm}: {submitForm:any}) => {
+export const FormSignUp = ({submitForm}: {submitForm:any}) => {
+  let {handleChange, values, handleSubmit, errors } = useForm(submitForm, validate);
+  if (errors === null) {
+    const tmp: IUserForm = {
+      username: "",
+      email: "",
+      password: "",
+      password2: "",
+    };
+    errors = tmp;
+  }
 
-  const {handleChange, values, handleSubmit, errors } = useForm(submitForm, validate);
+  console.log(`this is my errors ${JSON.stringify(errors)}`);
   return (
     <Styled.FormContentRight>
       <Styled.Form onSubmit={handleSubmit}>
@@ -16,7 +27,6 @@ const FormSignUp = ({submitForm}: {submitForm:any}) => {
             id="username"
             type="text"
             name="username"
-            className="form-input"
             placeholder="Enter your username"
             value={values.username}
             onChange={handleChange}
@@ -41,7 +51,6 @@ const FormSignUp = ({submitForm}: {submitForm:any}) => {
               id="password"
               type="password"
               name="password"
-              className="form-input"
               placeholder="Enter your password"
               value={values.password}
               onChange={handleChange}
@@ -67,5 +76,3 @@ const FormSignUp = ({submitForm}: {submitForm:any}) => {
     </Styled.FormContentRight>
   )
 }
-
-export default FormSignUp;

@@ -7,15 +7,15 @@ export interface IUserForm {
     password2: string
 }
 
-const useForm = (callback: any, validate: any) => {
-    let userForm: IUserForm = {
+export const useForm = (callback: (submit: boolean) => void, validate: any) => {
+    const userForm: IUserForm = {
         username: "",
         email: "",
         password: "",
         password2: "",
     };
     const [values, setValues] = useState (userForm);
-    const [errors, setErrors] = useState<IUserForm>(userForm);
+    const [errors, setErrors] = useState<IUserForm | null>(null);
     const [isSubmitting, setSubmitting] = useState(false);
 
     const handleChange = (e: any) => {
@@ -31,13 +31,16 @@ const useForm = (callback: any, validate: any) => {
         e.preventDefault();
         setErrors(validate(values))
         setSubmitting(true);
-        callback(true);
+        if (errors === null)
+            callback(true);
+        else
+            callback(false);
     }
 
     useEffect (
         () => {
-            if (Object.keys(errors).length === 0 && isSubmitting) {
-                callback();
+            if (errors != null && Object.keys(errors).length === 0 && isSubmitting) {
+                callback(false);
             }
         },
         [errors]
@@ -45,5 +48,3 @@ const useForm = (callback: any, validate: any) => {
 
     return { handleChange, values, handleSubmit, errors };
 }
-
-export default useForm;

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-
 import { ReactComponent as Logo } from './logo.svg';
-import Form from './Components/Form/Form'
-import SignIn from './Pages/SignIn/FormSignIn'
+import { FormCreate } from './Components/Form/Form'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 const StyledApp = styled.div`
@@ -18,8 +16,12 @@ export function App() {
       <Router>
         <Switch>
             <div className="App">
-                <Route path='/' exact component={Form}/>
-                <Route path='/signin' exact component={SignIn}/> 
+                <Route path='/' exact>
+                  <FormCreate type="SignUp"/>
+                </Route>
+                <Route path='/signin' exact>
+                  <FormCreate type="SignIn"/>
+                </Route>
             </div>
         </Switch>
     </Router>

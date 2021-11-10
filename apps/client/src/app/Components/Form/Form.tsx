@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
-import FormSignUp from '../../Pages/SignUp/FormSignUp'
-import FormSuccess from '../../Pages/FormSuccess/FormSuccess'
+import { FormSuccess, FormSignUp, FormSignIn } from '../../Pages/index'
 import spaceship from '../../../assets/Form/spaceship.svg';
 import styled from 'styled-components'
 import * as Styled from './styled'
 
 
-const Form = () => {
+type Props = {
+  type: string,
+}
+
+export const FormCreate: React.FC<Props> = ({type}) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  function submitForm() {
-      setIsSubmitted(true)
+  function submitForm(submit: boolean) {
+      setIsSubmitted(submit)
   }
   return (
       <>
@@ -19,10 +22,10 @@ const Form = () => {
         <Styled.FormContentLeft>
           <Styled.FormImg src={spaceship} alt='spaceship' />
         </Styled.FormContentLeft>
-        {!isSubmitted ? (<FormSignUp submitForm={submitForm} />) : (<FormSuccess />)}
+        {!isSubmitted ? 
+          type === 'SignUp' ? <FormSignUp submitForm={submitForm} /> : <FormSignIn submitForm={submitForm} />
+           : (<FormSuccess />)}
       </Styled.FormContainer>
       </>
   )
 }
-
-export default Form

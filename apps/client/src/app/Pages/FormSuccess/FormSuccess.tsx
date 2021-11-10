@@ -2,7 +2,7 @@ import React from 'react'
 import phone from './../../../assets/Form/phone.svg';
 import * as Styled from '../../Components/Form/styled'
 
-const FormSuccess = () => {
+export const FormSuccess = () => {
   return (
     <Styled.FormContentRight>
       <Styled.FormSucces>
@@ -12,5 +12,3 @@ const FormSuccess = () => {
     </Styled.FormContentRight>
   )
 }
-
-export default FormSuccess

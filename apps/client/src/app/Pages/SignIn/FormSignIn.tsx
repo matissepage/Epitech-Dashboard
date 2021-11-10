@@ -1,11 +1,21 @@
 import React from 'react';
-import useForm from '../../Components/Form/useForm';
+import { useForm } from '../../Components/Form/useForm';
 import validate from '../../Components/Form/validateInfo';
 import star from './../../../assets/Form/star.svg';
 import * as Styled from '../../Components/Form/styled'
+import { IUserForm } from '../../Components/Form/useForm';
 
-const FormSignIn = ({submitForm}: {submitForm:any}) => {
-  const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validate);
+export const FormSignIn = ({submitForm}: {submitForm:any}) => {
+  let {handleChange, values, handleSubmit, errors} = useForm(submitForm, validate);
+  if (errors === null) {
+    const tmp: IUserForm = {
+      username: "",
+      email: "",
+      password: "",
+      password2: "",
+    };
+    errors = tmp;
+  }
   return (
     <Styled.FormContainer>
       <Styled.CloseButton/>
@@ -58,5 +68,3 @@ const FormSignIn = ({submitForm}: {submitForm:any}) => {
         </Styled.FormContainer>
     )
 }
-
-export default FormSignIn
