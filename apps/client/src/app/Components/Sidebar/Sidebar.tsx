@@ -1,10 +1,14 @@
 import * as Styled from './styled'
 import React, { useState } from 'react';
+import { Link, NavLink } from "react-router-dom";
 
 export const SideBar = () => {
+
   return (
-    <div>
-      SideBar
-    </div>
-  )
+    <React.Fragment>
+      <Styled.SidebarNav>
+        <Styled.Text>Hello</Styled.Text>
+      </Styled.SidebarNav>
+    </React.Fragment>
+  ); 
 }

@@ -1,7 +1,7 @@
 
 import { IUserForm } from './useForm'
 
-export default function validateInfo(values: { username: string; email: string; password: any; password2: any; }) {
+export default function validateInfo(values: { username: string; email: string; password: string; password2: string; }) {
   const errors = {
     username: "",
     email: "",
@@ -21,7 +21,7 @@ export default function validateInfo(values: { username: string; email: string; 
   
   if (!values.password) {
     errors.password = "Password is required"
-  } else if (values.password.lenght < 5) {
+  } else if (values.password.length < 5) {
     errors.password = "Password needs to be 5 characters or more."
   }
 
