@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.7"
 
 networks:
   corp:
@@ -52,3 +52,20 @@ services:
     networks:
       - corp
     restart: on-failure
+
+  postgres:
+    image: postgres:10.5
+    restart: always
+    ports:
+      - "5432:5432"
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    env_file:
+      - database.env # configure postgres
+    volumes:
+      - database-data:/var/lib/postgresql/data # persist data
+
+volumes:
+  database-data:
