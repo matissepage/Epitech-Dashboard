@@ -10,48 +10,48 @@ services:
   #   build: .
   #   image: dashboard:nx-base
 
-  # api-server:
-  #   depends_on:
-  #     - builder
-  #   container_name: api-server
-  #   build:
-  #     context: ./
-  #     cache_from:
-  #       - dashboard:nx-base
-  #     dockerfile: ./apps/api/Dockerfile
-  #     args:
-  #       NODE_ENV: "development"
-  #       BUILD_FLAG: ""
-  #   ports:
-  #     - 8080:3333
-  #   environment:
-  #     NODE_ENV: "development"
-  #     # PORT: 4939
-  #   networks:
-  #     - corp
-  #   restart: on-failure
+  api-server:
+    depends_on:
+      - builder
+    container_name: api-server
+    build:
+      context: ./
+      cache_from:
+        - dashboard:nx-base
+      dockerfile: ./apps/api/Dockerfile
+      args:
+        NODE_ENV: "development"
+        BUILD_FLAG: ""
+    ports:
+      - 8080:3333
+    environment:
+      NODE_ENV: "development"
+      # PORT: 4939
+    networks:
+      - corp
+    restart: on-failure
 
-  # react-client:
-  #   depends_on:
-  #     - builder
-  #   container_name: react-client
-  #   build:
-  #     context: ./
-  #     cache_from:
-  #       - dashboard:nx-base
-  #       - nginx:1.19.2
-  #     dockerfile: ./apps/client/Dockerfile
-  #     args:
-  #       NODE_ENV: "development"
-  #       # BUILD_FLAG: ""
-  #   ports:
-  #     - 3000:80
-  #   environment:
-  #     NODE_ENV: "development"
-  #     # PORT: 4900
-  #   networks:
-  #     - corp
-  #   restart: on-failure
+  react-client:
+    depends_on:
+      - builder
+    container_name: react-client
+    build:
+      context: ./
+      cache_from:
+        - dashboard:nx-base
+        - nginx:1.19.2
+      dockerfile: ./apps/client/Dockerfile
+      args:
+        NODE_ENV: "development"
+        # BUILD_FLAG: ""
+    ports:
+      - 3000:80
+    environment:
+      NODE_ENV: "development"
+      # PORT: 4900
+    networks:
+      - corp
+    restart: on-failure
 
   postgres:
     image: postgres:10.5
