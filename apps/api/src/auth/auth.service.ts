@@ -11,4 +11,13 @@ export class AuthService {
       user: req.user,
     };
   }
+
+  githubLogin(req: Request): string | {message: string, user: unknown} {
+    if (!req.user)
+      return 'no user from github';
+    return {
+      message: 'User information from github',
+      user: req.user,
+    };
+  }
 }

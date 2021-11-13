@@ -9,6 +9,7 @@ export class AuthController {
 
   @Get('/google')
   @UseGuards(AuthGuard('google'))
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   async googleAuth(@Req() req: Request) {}
 
   @Get('redirect')
@@ -16,5 +17,17 @@ export class AuthController {
   googleAuthCallback(@Req() req: Request) {
     // or `return req.get('/google/redirect');`
     return this.authService.googleLogin(req);
+  }
+
+  @Get('/github')
+  @UseGuards(AuthGuard('github'))
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  async githubAuth(@Req() req: Request) {}
+
+  @Get('/github/redirect')
+  @UseGuards(AuthGuard('github'))
+  githubAuthCallback(@Req() req: Request) {
+    // or `return req.get('/github/redirect');`
+    return this.authService.githubLogin(req);
   }
 }
