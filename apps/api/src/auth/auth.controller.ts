@@ -7,6 +7,7 @@ import { Request } from 'express';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  // Google Connection
   @Get('/google')
   @UseGuards(AuthGuard('google'))
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -15,10 +16,10 @@ export class AuthController {
   @Get('redirect')
   @UseGuards(AuthGuard('google'))
   googleAuthCallback(@Req() req: Request) {
-    // or `return req.get('/google/redirect');`
     return this.authService.googleLogin(req);
   }
 
+  // Github Connection
   @Get('/github')
   @UseGuards(AuthGuard('github'))
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -27,7 +28,18 @@ export class AuthController {
   @Get('/github/redirect')
   @UseGuards(AuthGuard('github'))
   githubAuthCallback(@Req() req: Request) {
-    // or `return req.get('/github/redirect');`
     return this.authService.githubLogin(req);
+  }
+
+  // Spotify Connection
+  @Get('/spotify')
+  @UseGuards(AuthGuard('spotify'))
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  async spotifyAuth(@Req() req: Request) {}
+
+  @Get('/spotify/redirect')
+  @UseGuards(AuthGuard('spotify'))
+  spotifyAuthCallback(@Req() req: Request) {
+    return this.authService.spotifyLogin(req);
   }
 }
