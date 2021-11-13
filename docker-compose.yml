@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.7"
 
 networks:
   corp:
@@ -7,12 +7,21 @@ networks:
 services:
   # builder:
   #   container_name: dashboard:nx-base
-  #   build: .
-  #   image: dashboard:nx-base
+  #   build:
+  #     context: ./
+  #     dockerfile: ./Dockerfile
+  #     target: build
+  #   # image: dashboard:nx-base
+  #   restart: on-failure
 
+  # Init dashboard API
   api-server:
     depends_on:
-      - builder
+      # - builder
+      - postgres
+    links:
+      # - builder
+      - postgres
     container_name: api-server
     build:
       context: ./
@@ -23,17 +32,22 @@ services:
         NODE_ENV: "development"
         BUILD_FLAG: ""
     ports:
-      - 8080:3333
+      - "8080:8080"
     environment:
       NODE_ENV: "development"
-      # PORT: 4939
     networks:
       - corp
+      - db-network
     restart: on-failure
 
+  # Init React JS Dashboard application
   react-client:
     depends_on:
-      - builder
+      # - builder
+      - api-server
+    links:
+      # - builder
+      - api-server
     container_name: react-client
     build:
       context: ./
@@ -43,12 +57,38 @@ services:
       dockerfile: ./apps/client/Dockerfile
       args:
         NODE_ENV: "development"
-        # BUILD_FLAG: ""
     ports:
       - 3000:80
     environment:
       NODE_ENV: "development"
-      # PORT: 4900
     networks:
       - corp
     restart: on-failure
+
+  # Init DB Container
+  postgres:
+    image: postgres:10.5
+    container_name: postgres
+    restart: always
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:5432"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+    ports:
+      - "5432:5432"
+    env_file:
+      - database.env # configure postgres
+    volumes:
+      - database-data:/var/lib/postgresql/data # persist data
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql # create tables
+    networks:
+      - corp
+      - db-network
+
+volumes:
+  database-data:
+
+networks:
+  corp:
+  db-network:
