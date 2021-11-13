@@ -2,22 +2,21 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { config } from 'dotenv';
-import { Strategy } from 'passport-github';
+import { Strategy } from 'passport-spotify';
 
 config();
 
 @Injectable()
-export class GithubStrategy extends PassportStrategy(Strategy, 'github') {
+export class SpotidyStrategy extends PassportStrategy(Strategy, 'spotify') {
   constructor() {
     super({
-      clientID: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: process.env.GITHUB_CALLBACK_URL,
-      scope: ['profile', 'email'],
+      clientID: process.env.SPOTIFY_CLIENT_ID,
+      clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+      callbackURL: process.env.SPOTIFY_CALLBACK_URL,
+      scope: ['user-read-email', 'user-read-private'],
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async validate(
     accessToken: string,
     refreshToken: string,
