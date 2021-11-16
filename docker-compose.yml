@@ -5,22 +5,22 @@ networks:
     driver: bridge
 
 services:
-  # builder:
-  #   container_name: dashboard:nx-base
-  #   build:
-  #     context: ./
-  #     dockerfile: ./Dockerfile
-  #     target: build
-  #   # image: dashboard:nx-base
-  #   restart: on-failure
+  builder:
+    container_name: builder
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      target: build
+    image: dashboard:nx-base
+    restart: on-failure
 
   # Init dashboard API
   api-server:
     depends_on:
-      # - builder
+      - builder
       - postgres
     links:
-      # - builder
+      - builder
       - postgres
     container_name: api-server
     build:
@@ -43,10 +43,10 @@ services:
   # Init React JS Dashboard application
   react-client:
     depends_on:
-      # - builder
+      - builder
       - api-server
     links:
-      # - builder
+      - builder
       - api-server
     container_name: react-client
     build:
