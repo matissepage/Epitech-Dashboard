@@ -1,4 +1,4 @@
-import { IsDate, IsDefined, IsString, MinLength } from 'class-validator';
+import { IsDefined, IsString, MinLength } from 'class-validator';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
