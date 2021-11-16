@@ -24,13 +24,11 @@ export class User {
   @MinLength(1, { always: true })
   email: string;
 
-  @Column()
-  @IsDefined({ always: true })
-  @IsDate({ always: true })
-  created_at: Date;
+  // @Column()
+  // @IsDate({ always: true })
+  // created_at: number;
 
-  @Column()
-  @IsDefined({ always: true })
-  @IsDate({ always: true })
-  updated_at: Date;
+  // @Column()
+  // @IsDate({ always: true })
+  // updated_at: number;
 }
