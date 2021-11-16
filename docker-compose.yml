@@ -5,65 +5,65 @@ networks:
     driver: bridge
 
 services:
-  builder:
-    container_name: builder
-    build:
-      context: ./
-      dockerfile: ./Dockerfile
-      target: build
-    image: dashboard:nx-base
-    restart: on-failure
+  # builder:
+  #   container_name: builder
+  #   build:
+  #     context: ./
+  #     dockerfile: ./Dockerfile
+  #     target: build
+  #   image: dashboard:nx-base
+  #   restart: on-failure
 
   # Init dashboard API
-  api-server:
-    depends_on:
-      - builder
-      - postgres
-    links:
-      - builder
-      - postgres
-    container_name: api-server
-    build:
-      context: ./
-      cache_from:
-        - dashboard:nx-base
-      dockerfile: ./apps/api/Dockerfile
-      args:
-        NODE_ENV: "development"
-        BUILD_FLAG: ""
-    ports:
-      - "8080:8080"
-    environment:
-      NODE_ENV: "development"
-    networks:
-      - corp
-      - db-network
-    restart: on-failure
+  # api-server:
+  #   depends_on:
+  #     - builder
+  #     - postgres
+  #   links:
+  #     - builder
+  #     - postgres
+  #   container_name: api-server
+  #   build:
+  #     context: ./
+  #     cache_from:
+  #       - dashboard:nx-base
+  #     dockerfile: ./apps/api/Dockerfile
+  #     args:
+  #       NODE_ENV: "development"
+  #       BUILD_FLAG: ""
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     NODE_ENV: "development"
+  #   networks:
+  #     - corp
+  #     - db-network
+  #   restart: on-failure
 
   # Init React JS Dashboard application
-  react-client:
-    depends_on:
-      - builder
-      - api-server
-    links:
-      - builder
-      - api-server
-    container_name: react-client
-    build:
-      context: ./
-      cache_from:
-        - dashboard:nx-base
-        - nginx:1.19.2
-      dockerfile: ./apps/client/Dockerfile
-      args:
-        NODE_ENV: "development"
-    ports:
-      - 3000:80
-    environment:
-      NODE_ENV: "development"
-    networks:
-      - corp
-    restart: on-failure
+  # react-client:
+  #   depends_on:
+  #     - builder
+  #     - api-server
+  #   links:
+  #     - builder
+  #     - api-server
+  #   container_name: react-client
+  #   build:
+  #     context: ./
+  #     cache_from:
+  #       - dashboard:nx-base
+  #       - nginx:1.19.2
+  #     dockerfile: ./apps/client/Dockerfile
+  #     args:
+  #       NODE_ENV: "development"
+  #   ports:
+  #     - 3000:80
+  #   environment:
+  #     NODE_ENV: "development"
+  #   networks:
+  #     - corp
+  #   restart: on-failure
 
   # Init DB Container
   postgres:
