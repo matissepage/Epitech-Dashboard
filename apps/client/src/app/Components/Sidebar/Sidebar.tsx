@@ -7,7 +7,7 @@ export const SideBar = () => {
   return (
     <React.Fragment>
       <Styled.SidebarNav>
-        <Styled.Text>Hello</Styled.Text>
+        <Styled.TitleText>USERNAME</Styled.TitleText>
       </Styled.SidebarNav>
     </React.Fragment>
   ); 

@@ -8,6 +8,9 @@ const StyledApp = styled.div`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
   font-family: 'PT Sans', sans-serif;
 `;
 
@@ -16,17 +19,13 @@ export function App() {
     <StyledApp>
       <Router>
         <Switch>
-            <>
-            <div className="App">
-                <Route path='/' exact>
-                  <FormCreate type="SignUp"/>
-                </Route>
-                <Route path='/signin' exact>
-                  <FormCreate type="SignIn"/>
-                </Route>
-                <Route exact path='/home' component={HomePage} />
-            </div>
-            </>
+          <Route path='/' exact>
+            <FormCreate type="SignUp"/>
+          </Route>
+          <Route path='/signin' exact>
+            <FormCreate type="SignIn"/>
+          </Route>
+          <Route exact path='/home' component={HomePage} />
         </Switch>
     </Router>
     </StyledApp>
