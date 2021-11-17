@@ -23,12 +23,13 @@ export class User {
   @IsString({ always: true })
   @MinLength(1, { always: true })
   email: string;
+}
 
-  // @Column()
-  // @IsDate({ always: true })
-  // created_at: number;
-
-  // @Column()
-  // @IsDate({ always: true })
-  // updated_at: number;
+export class UserDTO {
+  id: number;
+  username: string;
+  password: string;
+  email: string;
+  token: string;
+  access_token?: string;
 }
