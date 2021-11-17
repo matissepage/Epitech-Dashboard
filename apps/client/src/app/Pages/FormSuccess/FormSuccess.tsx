@@ -6,7 +6,7 @@ export const FormSuccess = () => {
   return (
     <Styled.FormContentRight>
       <Styled.FormSucces>
-        We have received your request ! 😁
+        We have received your request !
       </Styled.FormSucces>
       <Styled.FormImg2 src={phone} alt="success"/>
     </Styled.FormContentRight>

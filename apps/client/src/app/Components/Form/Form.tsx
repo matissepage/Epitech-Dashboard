@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { FormSuccess, FormSignUp, FormSignIn } from '../../Pages/index'
 import spaceship from '../../../assets/Form/spaceship.svg';
-import styled from 'styled-components'
 import * as Styled from './styled'
 
 

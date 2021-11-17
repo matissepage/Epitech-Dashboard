@@ -16,7 +16,7 @@ export const FormSignIn = ({submitForm}: {submitForm:any}) => {
       </Styled.FormContentLeft>
       <Styled.FormContentRight>
         <Styled.Form onSubmit={handleSubmit}>
-          <Styled.FormH1>Welcome Back ! 😁 </Styled.FormH1>
+          <Styled.FormH1>Welcome Back ! </Styled.FormH1>
           <Styled.FormInputs>
               <Styled.FormLabel htmlFor="username">Username : </Styled.FormLabel>
                   <Styled.FormInput
