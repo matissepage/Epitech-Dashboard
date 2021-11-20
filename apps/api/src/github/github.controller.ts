@@ -27,7 +27,17 @@ export class GithubController {
   }
 
   @Get('/user/:id/repos')
-  getUserRepos(@Param('id') id: string): Observable<DashBoardResponse<GithubRepo[]>> {
+  getUserRepos(
+    @Param('id') id: string
+  ): Observable<DashBoardResponse<GithubRepo[]>> {
     return this.githubService.getUserRepos(id);
+  }
+
+  @Get('/user/:id/:repoName')
+  getSpecificRepo(
+    @Param('id') id: string,
+    @Param('repoName') name: string
+  ): Observable<DashBoardResponse<GithubRepo>> {
+    return this.githubService.getSearchRepo(id, name);
   }
 }

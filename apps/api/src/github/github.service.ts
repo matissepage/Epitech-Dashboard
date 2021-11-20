@@ -19,7 +19,7 @@ export class GithubService {
       .pipe(
         map((res) => {
           const response: DashBoardResponse<GithubFollower[]> = {
-            code: res.data !== [] ? 200 : 400,
+            statusCode: res.data !== [] ? 200 : 400,
             message: res.data !== [] ? 'success' : 'Possible bad id',
             response: res.data,
           };
@@ -35,14 +35,14 @@ export class GithubService {
         map((res) => {
           if (res.data.login === undefined) {
             const response: DashBoardResponse<GithubProfil> = {
-              code: 400,
+              statusCode: 400,
               message: 'Possible bad id',
               response: res.data,
             };
             return response;
           } else {
             const response: DashBoardResponse<GithubProfil> = {
-              code: 200,
+              statusCode: 200,
               message: 'success',
               response: res.data,
             };
@@ -59,14 +59,41 @@ export class GithubService {
         map((res) => {
           if (res.data === []) {
             const response: DashBoardResponse<GithubRepo[]> = {
-              code: 400,
+              statusCode: 400,
               message: 'Possible bad id',
               response: [],
             };
             return response;
           } else {
             const response: DashBoardResponse<GithubRepo[]> = {
-              code: 200,
+              statusCode: 200,
+              message: 'success',
+              response: res.data,
+            };
+            return response;
+          }
+        })
+      );
+  }
+
+  getSearchRepo(
+    id: string,
+    repoName: string
+  ): Observable<DashBoardResponse<GithubRepo>> {
+    return this.httpService
+      .get<GithubRepo>(`https://api.github.com/repos/${id}/${repoName}`)
+      .pipe(
+        map((res) => {
+          if (res === undefined) {
+            const response: DashBoardResponse<GithubRepo> = {
+              statusCode: 400,
+              message: 'Possible by id or wrong repository name',
+              response: {} as GithubRepo,
+            };
+            return response;
+          } else {
+            const response: DashBoardResponse<GithubRepo> = {
+              statusCode: 200,
               message: 'success',
               response: res.data,
             };

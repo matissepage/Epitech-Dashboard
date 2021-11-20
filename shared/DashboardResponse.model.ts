@@ -1,5 +1,5 @@
 export interface DashBoardResponse<T> {
-  code: number,
+  statusCode: number,
   message: string,
   response: T,
 };
