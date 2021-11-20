@@ -2,7 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
-import { GithubFollower } from './../../../../shared/github.models';
+import { GithubFollower, GithubProfil } from './../../../../shared/github.models';
 import { DashBoardResponse } from './../../../../shared/DashboardResponse.model';
 
 @Injectable()
@@ -20,6 +20,30 @@ export class GithubService {
             response: res.data
           }
           return response;
+        })
+      )
+  }
+
+  getProfil(id: string): Observable<DashBoardResponse> {
+    return this.httpService
+      .get<GithubProfil>(`https://api.github.com/users/${id}`)
+      .pipe(
+        map(res => {
+          if (res.data.login === undefined) {
+            const response: DashBoardResponse = {
+              code: 400,
+              message: 'Possible bad id',
+              response: res.data,
+            };
+            return response;
+          } else {
+            const response: DashBoardResponse = {
+              code: 200,
+              message: 'success',
+              response: res.data,
+            };
+            return response;
+          }
         })
       )
   }

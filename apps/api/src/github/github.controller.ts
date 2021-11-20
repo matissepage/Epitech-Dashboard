@@ -15,4 +15,9 @@ export class GithubController {
   // getFollowers(@Param('id') param: string): Promise<DashBoardResponse> {
   //   return this.githubService.getFollowers(param);
   // }
+
+  @Get('/user/:id')
+  getProfil(@Param('id') id: string): Observable<DashBoardResponse> {
+    return this.githubService.getProfil(id);
+  }
 }
