@@ -19,6 +19,7 @@
   },
   "private": true,
   "dependencies": {
+    "@nestjs/axios": "^0.0.3",
     "@nestjs/common": "^8.2.0",
     "@nestjs/core": "^8.2.0",
     "@nestjs/passport": "^8.0.1",
@@ -41,7 +42,7 @@
     "react-router-dom": "5.3.0",
     "reflect-metadata": "^0.1.13",
     "regenerator-runtime": "0.13.7",
-    "rxjs": "~6.6.3",
+    "rxjs": "^7",
     "styled-components": "5.3.3",
     "swagger-ui-express": "^4.1.6",
     "tslib": "^2.0.0"
