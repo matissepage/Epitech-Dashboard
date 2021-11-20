@@ -28,6 +28,21 @@ export class GithubService {
       );
   }
 
+  getFollowings(id: string): Observable<DashBoardResponse<GithubFollower[]>> {
+    return this.httpService
+      .get<GithubFollower[]>(`https://api.github.com/users/${id}/following`)
+      .pipe(
+        map((res) => {
+          const response: DashBoardResponse<GithubFollower[]> = {
+            statusCode: res.data !== [] ? 200 : 400,
+            message: res.data !== [] ? 'success' : 'Possible bad id',
+            response: res.data,
+          };
+          return response;
+        })
+      );
+  }
+
   getProfil(id: string): Observable<DashBoardResponse<GithubProfil>> {
     return this.httpService
       .get<GithubProfil>(`https://api.github.com/users/${id}`)

@@ -12,11 +12,18 @@ import {
 export class GithubController {
   constructor(private githubService: GithubService) {}
 
-  @Get('/followers/:id')
+  @Get('/user/:id/followers')
   getFollowers(
     @Param('id') param: string
   ): Observable<DashBoardResponse<GithubFollower[]>> {
     return this.githubService.getFollowers(param);
+  }
+
+  @Get('/user/:id/followings')
+  getFollowings(
+    @Param('id') param: string
+  ): Observable<DashBoardResponse<GithubFollower[]>> {
+    return this.githubService.getFollowings(param);
   }
 
   @Get('/user/:id')
