@@ -1,7 +1,5 @@
-import { GithubFollower, GithubProfil } from './github.models'
-
-export type DashBoardResponse = {
+export interface DashBoardResponse<T> {
   code: number,
   message: string,
-  response: GithubFollower[] | GithubProfil,
+  response: T,
 };
