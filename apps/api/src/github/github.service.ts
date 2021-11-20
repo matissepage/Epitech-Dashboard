@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import {
   GithubFollower,
   GithubProfil,
+  GithubRepo,
 } from './../../../../shared/github.models';
 import { DashBoardResponse } from './../../../../shared/DashboardResponse.model';
 
@@ -51,22 +52,27 @@ export class GithubService {
       );
   }
 
-  // async getFollowers(id: string): Promise<DashBoardResponse> {
-  //   this.followers = await (await this.httpService.get<GithubFollower[]>(`https://api.github.com/users/${id}/followers`).toPromise()).data
-  //   return new Promise((resolve, reject: (reason?: DashBoardResponse) => void) => {
-  //     if (this.followers !== []) {
-  //       resolve({
-  //         code: 200,
-  //         message: 'success',
-  //         response: this.followers
-  //       });
-  //     } else {
-  //       reject({
-  //         code: 400,
-  //         message: 'Possible bad id',
-  //         response: []
-  //       })
-  //     }
-  //   })
-  // }
+  getUserRepos(id: string): Observable<DashBoardResponse<GithubRepo[]>> {
+    return this.httpService
+      .get<GithubRepo[]>(`https://api.github.com/users/${id}/repos`)
+      .pipe(
+        map((res) => {
+          if (res.data === []) {
+            const response: DashBoardResponse<GithubRepo[]> = {
+              code: 400,
+              message: 'Possible bad id',
+              response: [],
+            };
+            return response;
+          } else {
+            const response: DashBoardResponse<GithubRepo[]> = {
+              code: 200,
+              message: 'success',
+              response: res.data,
+            };
+            return response;
+          }
+        })
+      );
+  }
 }

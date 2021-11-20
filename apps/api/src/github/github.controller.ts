@@ -5,6 +5,7 @@ import { DashBoardResponse } from './../../../../shared/DashboardResponse.model'
 import {
   GithubFollower,
   GithubProfil,
+  GithubRepo,
 } from './../../../../shared/github.models';
 
 @Controller('github')
@@ -23,5 +24,10 @@ export class GithubController {
     @Param('id') id: string
   ): Observable<DashBoardResponse<GithubProfil>> {
     return this.githubService.getProfil(id);
+  }
+
+  @Get('/user/:id/repos')
+  getUserRepos(@Param('id') id: string): Observable<DashBoardResponse<GithubRepo[]>> {
+    return this.githubService.getUserRepos(id);
   }
 }
