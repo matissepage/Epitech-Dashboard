@@ -1,4 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Req, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 import { AppService } from './app.service';
 
@@ -9,5 +10,11 @@ export class AppController {
   @Get()
   getData() {
     return this.appService.getData();
+  }
+
+  @Get('/tests')
+  @UseGuards(JwtAuthGuard)
+  testRoute(@Req() req: Request) {
+    return ('test valid')
   }
 }

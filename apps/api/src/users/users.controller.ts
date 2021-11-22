@@ -1,6 +1,13 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { Crud, Override, ParsedRequest, ParsedBody, CrudRequest, CrudController } from '@nestjsx/crud';
+import {
+  Crud,
+  Override,
+  ParsedRequest,
+  ParsedBody,
+  CrudRequest,
+  CrudController,
+} from '@nestjsx/crud';
 import { User, UserDTO } from './user';
 
 @Crud({
@@ -8,7 +15,7 @@ import { User, UserDTO } from './user';
     type: User,
   },
 })
-@Controller('users')
+@Controller('user')
 export class UsersController {
   constructor(public service: UsersService) {}
 
@@ -16,18 +23,20 @@ export class UsersController {
     return this;
   }
 
-  @Override()
-  createOne(
+  @Override('createOneBase')
+  async createOne(
     @ParsedRequest() req: CrudRequest,
-    @ParsedBody() dto: User,
+    @ParsedBody() dto: User
   ): Promise<User | UserDTO> {
-    const userDto: UserDTO = {
-      id: dto.id,
-      username: dto.username,
-      password: dto.password,
-      email: dto.email,
-      token: 'TOKEN',
-    };
-    return this.base.createOneBase(req, userDto);
+    const res = (await this.base.createOneBase(req, dto)) as UserDTO;
+    res.type = 'user';
+    res.token = await this.service.generateToken(res);
+    return new Promise((resolve, rejects) => {
+      try {
+        resolve(res);
+      } catch (err) {
+        rejects(err);
+      }
+    });
   }
 }

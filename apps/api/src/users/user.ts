@@ -26,10 +26,10 @@ export class User {
 }
 
 export class UserDTO {
-  id: number;
-  username: string;
+  id?: number;
+  username?: string;
   password: string;
-  email: string;
-  token: string;
-  access_token?: string;
+  email?: string;
+  token?: string;
+  type?: string;
 }
