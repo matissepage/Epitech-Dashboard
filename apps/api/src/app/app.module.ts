@@ -4,6 +4,7 @@ import { config } from 'dotenv';
 import { AuthModule } from '../auth/auth.module';
 import { User } from '../users/user';
 import { UsersModule } from '../users/users.module';
+import { GithubModule } from '../github/github.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -22,6 +23,7 @@ config();
     }),
     AuthModule,
     UsersModule,
+    GithubModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -8,8 +8,8 @@ export const InputButton = styled.div`
   border-radius: 2px;
   background: linear-gradient(
     90deg,
-    rgb(39, 176, 255) 0%,
-    rgb(0, 232, 236) 100%
+    rgb(120, 62, 253) 0%,
+    rgb(79, 70, 186) 100%
   );
   outline: none;
   border: none;
@@ -20,8 +20,8 @@ export const InputButton = styled.div`
     cursor: pointer;
     background: linear-gradient(
     90deg,
-    rgb(39, 143, 255) 0%,
-    rgb(12, 99, 250) 100%
+    rgb(120, 62, 253) 0%,
+    rgb(79, 70, 186) 100%
   );
   transition: all 0.4s ease-out;
   }
@@ -51,8 +51,8 @@ export const FormContainer = styled.div`
 export const FormContentLeft = styled.div`
   background: linear-gradient(
       90deg,
-      rgb(39, 176, 255) 0%,
-      rgb(0, 232, 236) 100%
+      rgb(120, 62, 253) 0%,
+      rgb(79, 70, 186) 100%
   );
   border-radius: 10px 0 0 10px;
   position: relative;
@@ -124,7 +124,7 @@ export const FormInput = styled.input`
   display: block;
   padding-left: 10px;
   outline: none;
-  border-radius: 2px;
+  border-radius: 5px;
   height: 40px;
   width: 100%;
   border: none;
@@ -134,11 +134,11 @@ export const FormInputBtn = styled.button`
   width: 80%;
   height: 50px;
   margin-top: 10px;
-  border-radius: 2px;
+  border-radius: 5px;
   background: linear-gradient(
     90deg,
-    rgb(39, 176, 255) 0%,
-    rgb(0, 232, 236) 100%
+    rgb(120, 62, 253) 0%,
+    rgb(79, 70, 186) 100%
   );
   outline: none;
   border: none;
