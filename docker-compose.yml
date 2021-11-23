@@ -5,22 +5,22 @@ networks:
     driver: bridge
 
 services:
-  # builder:
-  #   container_name: dashboard:nx-base
-  #   build:
-  #     context: ./
-  #     dockerfile: ./Dockerfile
-  #     target: build
-  #   # image: dashboard:nx-base
-  #   restart: on-failure
+  builder:
+    container_name: builder
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      target: build
+    image: dashboard:nx-base
+    restart: on-failure
 
   # Init dashboard API
   api-server:
     depends_on:
-      # - builder
+      - builder
       - postgres
     links:
-      # - builder
+      - builder
       - postgres
     container_name: api-server
     build:
@@ -34,19 +34,16 @@ services:
     ports:
       - "8080:8080"
     environment:
-      NODE_ENV: "development"
-    networks:
-      - corp
-      - db-network
+      PROD: "true"
     restart: on-failure
 
   # Init React JS Dashboard application
   react-client:
     depends_on:
-      # - builder
+      - builder
       - api-server
     links:
-      # - builder
+      - builder
       - api-server
     container_name: react-client
     build:
@@ -61,8 +58,6 @@ services:
       - 3000:80
     environment:
       NODE_ENV: "development"
-    networks:
-      - corp
     restart: on-failure
 
   # Init DB Container
@@ -82,13 +77,18 @@ services:
     volumes:
       - database-data:/var/lib/postgresql/data # persist data
       - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql # create tables
-    networks:
-      - corp
-      - db-network
+
+  pgadmin:
+    image: dpage/pgadmin4:4.28
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
 
 volumes:
   database-data:
-
-networks:
-  corp:
-  db-network:
