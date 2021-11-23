@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn nx run client:serveApp",
-    "start:dev": "docker-compose -d up && yarn start",
+    "start:dev:all": "docker-compose -d up && yarn start",
+    "start:dev:db": "docker-compose -d up postgres pgadmin && yarn start",
     "api:start": "yarn nx run api:serve",
     "api:lint": "yarn nx run api:lint",
     "api:test": "yarn nx run api:test",

@@ -3,6 +3,7 @@ import { ReactComponent as Logo } from './logo.svg';
 import { FormCreate } from './Components/Form/Form'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { HomePage } from './Pages/HomePage/HomePage';
+import { LoginSucess } from './Components/LoginSuccess/LoginSuccess';
 
 const StyledApp = styled.div`
   box-sizing: border-box;
@@ -19,6 +20,7 @@ export function App() {
     <StyledApp>
       <Router>
         <Switch>
+          <Route path='/auth/success' component={LoginSucess}/>
           <Route path='/' exact>
             <FormCreate type="SignUp"/>
           </Route>

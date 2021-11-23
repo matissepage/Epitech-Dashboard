@@ -12,6 +12,7 @@ Contain several links to help you to build a good application with nx, react, ne
 
 #### React
 
+- [node react oauth2](https://www.honeybadger.io/blog/oauth-nodejs-javascript/)
 
 #### Docker
 - [Dockerize nx app with an nginx server](https://medium.com/swlh/nx-nestjs-react-docker-deploys-928a55fc19fd)
