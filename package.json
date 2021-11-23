@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "start": "yarn nx run client:serveApp",
+    "start:dev": "docker-compose -d up && yarn start",
     "api:start": "yarn nx run api:serve",
     "api:lint": "yarn nx run api:lint",
     "api:test": "yarn nx run api:test",
@@ -14,8 +16,7 @@
     "client:test": "yarn nx run client:test",
     "client:clean": "rm -rf ./dist/apps/client",
     "client-e2e:start": "yarn nx run client-e2e:e2e",
-    "client-e2e:lint": "yarn nx run client-e2e:lint",
-    "app:start": "yarn nx run client:serveApp"
+    "client-e2e:lint": "yarn nx run client-e2e:lint"
   },
   "private": true,
   "dependencies": {
