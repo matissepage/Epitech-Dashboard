@@ -11,11 +11,13 @@ export const Button = styled.button`
   outline: 0;
   background-color: transparent;
   position: relative;
-  &:i {
-    font-size: 2.5rem;
-    color: var(--txt-color2);
-  }
 `
+
+export const Icon = styled.i`
+  font-size: 2.5rem;
+  color: var(--txt-color2);
+`
+
 export const Badge = styled.span`
   display: flex;
   align-items: center;

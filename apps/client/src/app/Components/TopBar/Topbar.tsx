@@ -8,12 +8,16 @@ import {
   TB_RightUser,
   TB_RightUserImage,
   TB_RightUserName,
+  Search,
 } from './styled';
+import {
+  AiFillBell
+} from 'react-icons/ai'
 import ProfilePicture from '../../../assets/Profile/profile.png';
 import { Dropdown } from '../DropDown/DropDown';
 import { Link } from 'react-router-dom';
-// const user_menu = require('../../../assets/JsonData/user_menu.json');
-// const notifications = require('../../../assets/JsonData/notification.json');
+const user_menu = require('../../../assets/JsonData/user_menu.json');
+const notifications = require('../../../assets/JsonData/notification.json');
 
 const curr_user = {
   display_name: 'Matisse Page',
@@ -50,21 +54,23 @@ const renderUserMenu =(item:any, index:any) => (
 export const TopBar = () => {
   return (
     <Container>
+      <Search>
+      </Search>
       <TopBarRight>
         <TopBarItem>
-          {/* <Dropdown
+          <Dropdown
             customToggle={() => renderUserToggle(curr_user)}
             contentData={user_menu}
             renderItems={(item:any, index:any) => renderUserMenu(item, index)}
-          /> */}
+          />
           <TopBarItem>
-            {/* <Dropdown
-              icon='bx bx-bell'
+            <Dropdown
+              icon={<AiFillBell />}
               badge='15'
               contentData={notifications}
               renderItems={(item:any, index:any) => renderNotificationItem(item, index)}
               renderFooter={() => <Link to='/'>View All</Link>}
-            /> */}
+            />
           </TopBarItem>
         </TopBarItem>
       </ TopBarRight>

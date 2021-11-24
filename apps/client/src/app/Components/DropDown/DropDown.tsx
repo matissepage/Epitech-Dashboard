@@ -4,7 +4,8 @@ import {
   Container,
   Badge,
   Content,
-  Footer
+  Footer,
+  Icon
 } from './styled';
 
 const clickOutsideRef = (content_ref: any, toggle_ref: any) => {
@@ -30,7 +31,7 @@ export const Dropdown = (props:any) => {
     <Container>
       <Button>
         {
-          props.icon ? <i className={props.icon}></i> : ''
+          props.icon ? <Icon>{props.icon}</Icon> : ''
         }
         {
           props.badge ? <Badge >{props.badge}</Badge> : ''
@@ -51,6 +52,23 @@ export const Dropdown = (props:any) => {
           ) : ''
         }
       </Content>
+    </Container>
+  )
+}
+
+export const ProfileInfo = (props:any) => {
+
+  return (
+    <Container>
+      {
+        props.icon ? <Icon>{props.icon}</Icon> : ''
+      }
+      {
+        props.badge ? <Badge >{props.badge}</Badge> : ''
+      }
+      {
+        props.customToggle ? props.customToggle() : ''
+      }
     </Container>
   )
 }
