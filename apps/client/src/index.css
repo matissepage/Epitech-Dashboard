@@ -1,0 +1,62 @@
+
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  }
+
+  :root {
+    --main-bg: #222338;
+    --second-bg: #4F46BA;
+    --third-bg: #FF4267;
+    --txt-color: white;
+    --txt-color2: #6c737a;
+    --sidebar-width: 250px;
+    --border-radius: 10px;
+    --topnav-height: 110px;
+    --box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+  body,
+  html {
+    background-color: #f0f0f0;
+    box-sizing: border-box;
+  }
+  
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  header,
+  html,
+  i,
+  img,
+  label,
+  li,
+  nav,
+  p,
+  small,
+  span,
+  ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

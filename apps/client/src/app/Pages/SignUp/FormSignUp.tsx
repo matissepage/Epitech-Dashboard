@@ -10,7 +10,7 @@ export const FormSignUp = ({submitForm}: {submitForm:any}) => {
   return (
     <Styled.FormContentRight>
       <Styled.Form onSubmit={handleSubmit}>
-        <Styled.FormH1>Create your account ! 🌏 </Styled.FormH1>
+        <Styled.FormH1>Create your account ! </Styled.FormH1>
         <Styled.FormInputs>
           <Styled.FormLabel htmlFor="username">Username : </Styled.FormLabel>
             <Styled.FormInput

@@ -7,7 +7,7 @@ export interface IUserForm {
     password2: string
 }
 
-export const useForm = (callback: (submit: boolean) => void, validate: any) => {
+export const useForm = (callback: (submit: boolean) => void, validate: (values: IUserForm) => IUserForm) => {
     const userForm: IUserForm = {
         username: "",
         email: "",
@@ -18,7 +18,7 @@ export const useForm = (callback: (submit: boolean) => void, validate: any) => {
     const [errors, setErrors] = useState<IUserForm>(userForm);
     const [isSubmitting, setSubmitting] = useState(false);
 
-    const handleChange = (e: any) => {
+    const handleChange = (e: { target: { name: string; value: string; }; }) => {
         const {name, value} = e.target
         setValues({
             ...values,
@@ -26,7 +26,7 @@ export const useForm = (callback: (submit: boolean) => void, validate: any) => {
         });
     };
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         setErrors(validate(values))
         setSubmitting(true);
