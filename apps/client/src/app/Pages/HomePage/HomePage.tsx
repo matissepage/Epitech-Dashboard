@@ -12,6 +12,7 @@ import {
   AiFillGithub,
 } from 'react-icons/ai';
 import { TopBar } from '../../Components/TopBar/Topbar';
+import { GithubFollowers } from '../../Components/Github/Followers/GithubFollowers';
 
 const Container = styled.div`
   padding-left: var(--sidebar-width);
@@ -24,14 +25,14 @@ export const HomePage = () => {
       <SideBar />
       <Container>
         <TopBar />
-        <Draggable>
+        {/* <Draggable>
           <div>
             <Widget icon={<AiFillGoogleCircle />} count="Agenda" title="Google Services"/>
           </div>
-        </Draggable>
+        </Draggable> */}
         <Draggable>
           <div>
-            <Widget icon={<AiFillGithub />} count="Commit" title="Github Services"/>
+            <Widget icon={AiFillGithub} count="Commit" title="Github Services" child={GithubFollowers} />
           </div>
           </Draggable>
       </Container>
