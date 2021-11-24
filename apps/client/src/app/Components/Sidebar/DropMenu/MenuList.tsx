@@ -19,7 +19,6 @@ export const MenuList: MenuItem[] = [
     subnav: [
       {
         title: 'Widget1',
-        // This aim is to have a drag an drop and not a route redirect
         path: '/google/widget1',
         icon: <MdWidgets />
       },

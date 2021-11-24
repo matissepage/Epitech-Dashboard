@@ -73,7 +73,7 @@ export const TopBar = () => {
         <TopBarItem>
             <Dropdown
               icon={<AiFillBell />}
-              badge='15'
+              badge='3'
               contentData={notifications}
               renderItems={(item:any, index:any) => renderNotificationItem(item, index)}
               renderFooter={() => <Link to='/'>View All</Link>}
