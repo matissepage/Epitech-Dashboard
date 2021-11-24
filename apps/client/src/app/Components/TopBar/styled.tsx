@@ -38,8 +38,13 @@ export const TopBarRight = styled.div`
 `
 
 export const TopBarItem = styled.div`
-  padding-right: 30px;
+  margin-left: 30px;
 `
+
+export const TopBarItemB = styled(TopBarItem)`
+  margin-left: 30px;
+`
+
 export const ProfileImg = styled.img`
   width: 10%;
 `

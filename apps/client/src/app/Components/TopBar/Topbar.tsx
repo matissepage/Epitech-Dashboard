@@ -3,30 +3,33 @@ import {
   Container,
   TopBarRight,
   TopBarItem,
-  ProfileImg,
   NotificationItem,
   TB_RightUser,
   TB_RightUserImage,
   TB_RightUserName,
   Search,
 } from './styled';
+
 import {
   AiFillBell
 } from 'react-icons/ai'
+
 import ProfilePicture from '../../../assets/Profile/profile.png';
 import { Dropdown } from '../DropDown/DropDown';
 import { Link } from 'react-router-dom';
+
 const user_menu = require('../../../assets/JsonData/user_menu.json');
 const notifications = require('../../../assets/JsonData/notification.json');
 
+
 const curr_user = {
-  display_name: 'Matisse Page',
-  image: ProfilePicture
+  display_name: 'Matisse',
+  image: {ProfilePicture}
 }
 
 const renderNotificationItem = (item:any, index:any) => (
   <NotificationItem key={index}>
-      <i className={item.icon}></i>
+      <i>{item.icon}</i>
       <span>{item.content}</span>
   </NotificationItem>
 )
@@ -63,7 +66,8 @@ export const TopBar = () => {
             contentData={user_menu}
             renderItems={(item:any, index:any) => renderUserMenu(item, index)}
           />
-          <TopBarItem>
+        </TopBarItem>
+        <TopBarItem>
             <Dropdown
               icon={<AiFillBell />}
               badge='15'
@@ -71,7 +75,6 @@ export const TopBar = () => {
               renderItems={(item:any, index:any) => renderNotificationItem(item, index)}
               renderFooter={() => <Link to='/'>View All</Link>}
             />
-          </TopBarItem>
         </TopBarItem>
       </ TopBarRight>
     </Container>

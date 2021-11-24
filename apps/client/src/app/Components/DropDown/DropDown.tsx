@@ -30,20 +30,12 @@ export const Dropdown = (props:any) => {
   return (
     <Container>
       <Button>
-        {
-          props.icon ? <Icon>{props.icon}</Icon> : ''
-        }
-        {
-          props.badge ? <Badge >{props.badge}</Badge> : ''
-        }
-        {
-          props.customToggle ? props.customToggle() : ''
-        }
+        {props.icon ? <Icon>{props.icon}</Icon> : ''}
+        {props.badge ? <Badge >{props.badge}</Badge> : ''}
+        {props.customToggle ? props.customToggle() : ''}
       </Button>
       <Content ref={dropdown_content_el}>
-        {
-          props.contentData && props.renderItems ? props.contentData.map((item:any, index:any) => props.renderItems(item, index)) : ''
-        }
+        {props.contentData && props.renderItems ? props.contentData.map((item:any, index:any) => props.renderItems(item, index)) : ''}
         {
           props.renderFooter ? (
             <Footer>
@@ -52,23 +44,6 @@ export const Dropdown = (props:any) => {
           ) : ''
         }
       </Content>
-    </Container>
-  )
-}
-
-export const ProfileInfo = (props:any) => {
-
-  return (
-    <Container>
-      {
-        props.icon ? <Icon>{props.icon}</Icon> : ''
-      }
-      {
-        props.badge ? <Badge >{props.badge}</Badge> : ''
-      }
-      {
-        props.customToggle ? props.customToggle() : ''
-      }
     </Container>
   )
 }
