@@ -31,7 +31,7 @@ export const HomePage = () => {
         </Draggable>
         <Draggable>
           <div>
-            <Widget icon={<AiFillGithub/>} count="Commit" title="Github Services"/>
+            <Widget icon={<AiFillGithub />} count="Commit" title="Github Services"/>
           </div>
           </Draggable>
       </Container>
