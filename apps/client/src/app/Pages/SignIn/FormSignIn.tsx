@@ -3,17 +3,16 @@ import { useForm } from '../../Components/Form/useForm';
 import validate from '../../Components/Form/validateInfo';
 import star from './../../../assets/Form/star.svg';
 import * as Styled from '../../Components/Form/styled';
-import { IUserForm } from '../../Components/Form/useForm';
 import { ButtonLogin } from '../../Components/ButtonLogin/ButtonLogin';
 import styled from 'styled-components';
 import { FcGoogle } from 'react-icons/fc';
 import { BsSpotify } from 'react-icons/bs';
 import { AiFillGithub } from 'react-icons/ai';
-import { useEffect } from 'react-router/node_modules/@types/react';
 import { useHistory } from 'react-router-dom';
+import { redirectToSSo } from '../../services/auth/auth';
 
 interface Props {
-  submitForm: any,
+  submitForm: any;
 }
 
 export const FormSignIn: React.FC<Props> = ({ submitForm }) => {
@@ -22,51 +21,14 @@ export const FormSignIn: React.FC<Props> = ({ submitForm }) => {
     validate
   );
   const history = useHistory();
-
-  const redirectToSpotifySSo = async () => {
-    const url = 'http://localhost:8080/auth/spotify';
-    const newWindow = window.open(url, '_blank', 'width=500,height=600');
-    if (newWindow) {
-      const timer = setInterval(function () {
-        if (newWindow.closed) {
-          clearInterval(timer);
-          console.log('closed');
-          history.push('/home');
-          window.location.reload();
-        }
-      }, 500);
+  const isValid = (name: string): boolean => {
+    if (localStorage.getItem(name)) {
+      console.log('true');
+      return true;
     }
-  };
-
-  const redirectToGoogleSSo = async () => {
-    const url = 'http://localhost:8080/auth/google';
-    const newWindow = window.open(url, '_blank', 'width=500,height=600');
-    if (newWindow) {
-      const timer = setInterval(function () {
-        if (newWindow.closed) {
-          clearInterval(timer);
-          console.log('closed');
-          history.push('/home');
-          window.location.reload();
-        }
-      }, 500);
-    }
-  };
-
-  const redirectToGithubSSo = async () => {
-    const url = 'http://localhost:8080/auth/github';
-    const newWindow = window.open(url, '_blank', 'width=500,height=600');
-    if (newWindow) {
-      const timer = setInterval(function () {
-        if (newWindow.closed) {
-          clearInterval(timer);
-          console.log('closed');
-          history.push('/home');
-          window.location.reload();
-        }
-      }, 500);
-    }
-  };
+    console.log(localStorage.getItem(name));
+    return false;
+  }
 
   return (
     <div>
@@ -122,15 +84,39 @@ export const FormSignIn: React.FC<Props> = ({ submitForm }) => {
               <LoginOauthContainer>
                 <ButtonLogin
                   icon={FcGoogle}
-                  onClickCallback={redirectToGoogleSSo}
+                  onClickCallback={() =>
+                    redirectToSSo(
+                      history,
+                      'http://localhost:8080/auth/google',
+                      'access_token_google',
+                      '/home',
+                      isValid,
+                    )
+                  }
                 />
                 <ButtonLogin
                   icon={BsSpotify}
-                  onClickCallback={redirectToSpotifySSo}
+                  onClickCallback={() =>
+                    redirectToSSo(
+                      history,
+                      'http://localhost:8080/auth/spotify',
+                      'access_token_spotify',
+                      '/home',
+                      isValid,
+                    )
+                  }
                 />
                 <ButtonLogin
                   icon={AiFillGithub}
-                  onClickCallback={redirectToGithubSSo}
+                  onClickCallback={() =>
+                    redirectToSSo(
+                      history,
+                      'http://localhost:8080/auth/github',
+                      'access_token_github',
+                      '/home',
+                      isValid,
+                    )
+                  }
                 />
               </LoginOauthContainer>
             </Styled.FormInputs>

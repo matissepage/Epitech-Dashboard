@@ -15,7 +15,7 @@ export const LoginSucess = () => {
   const provider = token
     .split('&')[1]
     .slice(token.split('&')[1].indexOf('=') + 1);
-  localStorage.setItem('acess_token_' + provider, jwt);
+  localStorage.setItem('access_token_' + provider, jwt);
   useEffect(() => {
     setTimeout(() => {
       window.close();
