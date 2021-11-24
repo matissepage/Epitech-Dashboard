@@ -3,7 +3,6 @@ import { FormSuccess, FormSignUp, FormSignIn } from '../../Pages/index'
 import spaceship from '../../../assets/Form/spaceship.svg';
 import * as Styled from './styled'
 
-
 type Props = {
   type: string,
 }

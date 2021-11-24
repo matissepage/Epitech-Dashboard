@@ -10,12 +10,18 @@ import { FcGoogle } from 'react-icons/fc';
 import { BsSpotify } from 'react-icons/bs';
 import { AiFillGithub } from 'react-icons/ai';
 import { useEffect } from 'react-router/node_modules/@types/react';
+import { useHistory } from 'react-router-dom';
 
-export const FormSignIn = ({ submitForm }: { submitForm: any }) => {
+interface Props {
+  submitForm: any,
+}
+
+export const FormSignIn: React.FC<Props> = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, errors } = useForm(
     submitForm,
     validate
   );
+  const history = useHistory();
 
   const redirectToSpotifySSo = async () => {
     const url = 'http://localhost:8080/auth/spotify';
@@ -25,9 +31,10 @@ export const FormSignIn = ({ submitForm }: { submitForm: any }) => {
         if (newWindow.closed) {
           clearInterval(timer);
           console.log('closed');
+          history.push('/home');
           window.location.reload();
         }
-      }, 1000);
+      }, 500);
     }
   };
 
@@ -39,9 +46,10 @@ export const FormSignIn = ({ submitForm }: { submitForm: any }) => {
         if (newWindow.closed) {
           clearInterval(timer);
           console.log('closed');
+          history.push('/home');
           window.location.reload();
         }
-      }, 1000);
+      }, 500);
     }
   };
 
@@ -53,9 +61,10 @@ export const FormSignIn = ({ submitForm }: { submitForm: any }) => {
         if (newWindow.closed) {
           clearInterval(timer);
           console.log('closed');
+          history.push('/home');
           window.location.reload();
         }
-      }, 1000);
+      }, 500);
     }
   };
 
