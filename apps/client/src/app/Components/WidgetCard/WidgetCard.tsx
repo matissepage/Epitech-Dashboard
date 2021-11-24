@@ -10,7 +10,7 @@ export const Widget = (props: any) => {
   return (
     <WidgetCard>
       <WidgetCardIcon>
-        <i className={props.icon}></i>
+        <i>{props.icon}</i>
       </WidgetCardIcon>
       <WidgetCardInfo>
         <h4>{props.count}</h4>

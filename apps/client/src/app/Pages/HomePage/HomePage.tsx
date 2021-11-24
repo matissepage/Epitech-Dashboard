@@ -26,12 +26,12 @@ export const HomePage = () => {
         <TopBar />
         <Draggable>
           <div>
-            <Widget icon={AiFillGoogleCircle} count="Agenda" title="Google Services"/>
+            <Widget icon={<AiFillGoogleCircle />} count="Agenda" title="Google Services"/>
           </div>
         </Draggable>
         <Draggable>
           <div>
-            <Widget icon={AiFillGithub} count="Commit" title="Github Services"/>
+            <Widget icon={<AiFillGithub />} count="Commit" title="Github Services"/>
           </div>
           </Draggable>
       </Container>
