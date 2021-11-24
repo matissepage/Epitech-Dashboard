@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 
 export const Container = styled.div`
-  width: 250px;
+  width: var(--sidebar-width);
   height: 100vh;
-  background-color: #222338;
+  background-color: var(--main-bg);
   position: fixed;
   top: 0;
   left: 0;
@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const TitleText = styled.div`
-  color: white;
+  color: var(--txt-color);
   font-size: 1.3em;
   text-align: center;
   font-weight: bold;
@@ -24,7 +24,7 @@ export const TitleText = styled.div`
 `
 
 export const Text = styled.div`
-  color: #6e747d;
+  color: var(--txt-color2);
   font-size: 1.1em;
   text-align: center;
   top: 45;
@@ -56,8 +56,8 @@ export const SidebarLink = styled(Link)`
   color: #ffffff;
 
   &:hover {
-    background-color: #4F46BA;
-    border-left: 4px solid #FF4267;
+    background-color: var(--second-bg);
+    border-left: 4px solid var(--third-bg);
   }
 `;
 
@@ -73,9 +73,9 @@ export const DropdownLink = styled(Link)`
   font-size: 1.125rem;
   padding-left: 3rem;
   text-decoration: none;
-  color: #6c737a;
+  color: var(--txt-color2);
 
   &:hover {
-    background-color: #FF4267;
+    background-color: var(--third-bg);
   }
 `;
