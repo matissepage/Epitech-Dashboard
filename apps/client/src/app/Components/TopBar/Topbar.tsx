@@ -12,8 +12,8 @@ import {
 import ProfilePicture from '../../../assets/Profile/profile.png';
 import { Dropdown } from '../DropDown/DropDown';
 import { Link } from 'react-router-dom';
-const user_menu = require('../../../assets/JsonData/user_menu.json');
-const notifications = require('../../../assets/JsonData/notification.json');
+// const user_menu = require('../../../assets/JsonData/user_menu.json');
+// const notifications = require('../../../assets/JsonData/notification.json');
 
 const curr_user = {
   display_name: 'Matisse Page',
