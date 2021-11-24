@@ -1,6 +1,5 @@
 import React from 'react'
-import phone from './../../../assets/Form/phone.svg';
-import * as Styled from '../../Components/Form/styled'
+import { Rnd } from 'react-rnd';
 import Draggable, { DraggableCore } from 'react-draggable';
 import { SideBar } from '../../Components/Sidebar/Sidebar';
 import styled from 'styled-components';
@@ -24,11 +23,11 @@ export const HomePage = () => {
       <SideBar />
       <Container>
         <TopBar />
-        <Draggable>
+        <Rnd>
           <div>
             <Widget icon={<AiFillGoogleCircle />} count="Agenda" title="Google Services"/>
           </div>
-        </Draggable>
+        </Rnd>
         <Draggable>
           <div>
             <Widget icon={<AiFillGithub />} count="Commit" title="Github Services"/>
