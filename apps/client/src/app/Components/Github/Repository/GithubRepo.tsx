@@ -1,27 +1,19 @@
 import { useEffect, useState } from 'react';
-import { getFollows } from '../../../services/github/profil';
-import { GithubFollower } from './../../../../../../../shared/github.models';
+import { getRepositorys } from '../../../services/github/profil';
+import { GithubRepo } from './../../../../../../../shared/github.models';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { MenuItem, Select } from '@mui/material';
 
-export const GithubFollowers = (): JSX.Element => {
-  const [followers, setFollowers] = useState<GithubFollower[]>([]);
+export const GithubRepositorys = (): JSX.Element => {
+  const [repositorys, setRepositorys] = useState<GithubRepo[]>([]);
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState<string>('');
-  const [type, setType] = useState<string>('follower');
-
-  const types: string[] = [
-    'followers',
-    'followings',
-  ];
 
   const putRequest = (): void => {
-    if (name === '' || type === '')
+    if (name === '')
       return;
-    getFollows(name, type)
+    getRepositorys(name)
       .then((res) => {
-        setFollowers(res);
+        setRepositorys(res);
         setLoading(false);
       })
       .catch((err) => {
@@ -47,34 +39,23 @@ export const GithubFollowers = (): JSX.Element => {
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-        <label>
-          <SelectMenu
-            labelId="demo-simple-select-standard-label"
-            value={type}
-            onChange={(e) => {
-              setType(e.target.value as string)
-            }}
-            label='Follower'
-          >
-            {types.map((type) => {
-              return (
-                <MenuItem value={type}>{type}</MenuItem>
-              )
-            })}
-          </SelectMenu>
-        </label>
         <input type='submit' value='search' />
       </Form>
-      <h1>Github Followers</h1>
+      <h1>Github Repositorys</h1>
       <Ul>
-        {followers.map((follower, i) => {
+        {repositorys.map((repo, i) => {
           return (
-            <MyLink href={follower.html_url} target="_blank">
-              <Li key={`item_${i}`}>
-                <p>{follower.login}</p>
-                <img src={follower.avatar_url} alt="avatar" />
-              </Li>
-            </MyLink>
+            <Li key={`item_${i}`}>
+              <About>
+                <MyLink href={repo.html_url} target="_blank">
+                  <Title>{repo.name}</Title>
+                  <p>{repo.description}</p>
+                </MyLink>
+              </About>
+              <MyLink href={repo.owner.html_url} target="_blank">
+                <img src={repo.owner.avatar_url} alt="avatar" />
+              </MyLink>
+            </Li>
           );
         })}
       </Ul>
@@ -89,6 +70,7 @@ const Container = styled.div`
 const Ul = styled.ul`
   overflow-y: scroll;
   height: 300px;
+  width: 100%;
   margin: 10px;
 `;
 
@@ -96,24 +78,27 @@ const Li = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   img {
     width: 30px;
     height: 30px;
     border-radius: 50%;
   }
 `;
+
+const About = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const Title = styled.h3`
+`
+
 const MyLink = styled.a`
   text-decoration: none;
   color: inherit;
   cursor: pointer;
 `;
-
-const SelectMenu = styled(Select)`
-  width: 100px;
-  height: 25px;
-  color: white;
-`
 
 const NameInput = styled.input`
   width: 100px;
