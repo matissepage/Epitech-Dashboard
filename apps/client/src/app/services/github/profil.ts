@@ -12,6 +12,7 @@ export const getFollows = async (id: string, type: string): Promise<GithubFollow
           }
           resolve(response.data.response);
         })
+        .catch(err => console.error(err))
     } catch (err) {
       reject(err)
     }
