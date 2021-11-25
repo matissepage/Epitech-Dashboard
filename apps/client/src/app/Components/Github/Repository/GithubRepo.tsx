@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getRepositorys } from '../../../services/github/profil';
 import { GithubRepo } from './../../../../../../../shared/github.models';
 import styled from 'styled-components';
+import randomColor from "randomcolor";
 
 export const GithubRepositorys = (): JSX.Element => {
   const [repositorys, setRepositorys] = useState<GithubRepo[]>([]);
@@ -49,8 +50,11 @@ export const GithubRepositorys = (): JSX.Element => {
               <About>
                 <MyLink href={repo.html_url} target="_blank">
                   <Title>{repo.name}</Title>
-                  <p>{repo.description}</p>
                 </MyLink>
+                <Description>{repo.description}</Description>
+                <Logo>
+                  <Language>{repo.language}</Language>
+                </Logo>
               </About>
               <MyLink href={repo.owner.html_url} target="_blank">
                 <img src={repo.owner.avatar_url} alt="avatar" />
@@ -79,6 +83,7 @@ const Li = styled.li`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   img {
     width: 30px;
     height: 30px;
@@ -92,6 +97,33 @@ const About = styled.div`
 `
 
 const Title = styled.h3`
+  margin-bottom: 7px;
+  font-size: 20px;
+  font-weight: 600;
+`
+
+const Description = styled.p`
+  margin-bottom: 20px;
+  color: #768390 !important;
+  word-wrap: break-word;
+`
+
+const Logo = styled.div`
+  width: 10px;
+  height: 10px;
+  background-color: ${() => randomColor()};
+  border-radius: 50%;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+
+`
+
+const Language = styled.p`
+  margin-left: 20px;
+  text-align: center;
+  background-color: transparent;
 `
 
 const MyLink = styled.a`
