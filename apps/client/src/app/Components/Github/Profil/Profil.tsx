@@ -20,7 +20,6 @@ export const GithubProfile = (): JSX.Element => {
       .then(res => {
         setProfil(res);
         setLoading(false);
-        console.log(res);
       })
       .catch(err => console.error(err));
   };
