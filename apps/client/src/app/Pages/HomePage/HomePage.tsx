@@ -10,6 +10,7 @@ import {
   AiFillGoogleCircle,
   AiFillGithub,
 } from 'react-icons/ai';
+import { BsSpotify } from 'react-icons/bs';
 import { TopBar } from '../../Components/TopBar/Topbar';
 
 const Container = styled.div`
@@ -23,16 +24,11 @@ export const HomePage = () => {
       <SideBar />
       <Container>
         <TopBar />
-        <Rnd>
-          <div>
-            <Widget icon={<AiFillGoogleCircle />} count="Agenda" title="Google Services"/>
-          </div>
-        </Rnd>
-        <Draggable>
-          <div>
-            <Widget icon={<AiFillGithub />} count="Commit" title="Github Services"/>
-          </div>
-          </Draggable>
+          <Widget icon={<AiFillGoogleCircle />} count="Agenda" title="Google Services"/>
+          <Widget icon={<AiFillGoogleCircle />} count="Agenda" title="Google Services"/>
+          <Widget icon={<AiFillGithub />} count="Agenda" title="Google Services"/>
+          <Widget icon={<BsSpotify />} count="Agenda" title="Google Services"/>
+          <Widget icon={<AiFillGoogleCircle />} count="Agenda" title="Google Services"/>
       </Container>
     </>
   )
