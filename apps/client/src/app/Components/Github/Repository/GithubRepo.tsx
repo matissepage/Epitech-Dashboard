@@ -38,6 +38,7 @@ export const GithubRepositorys = (): JSX.Element => {
             type="text"
             placeholder="github id"
             onChange={(e) => setName(e.target.value)}
+            value={name} 
           />
         </label>
         <input type='submit' value='search' />

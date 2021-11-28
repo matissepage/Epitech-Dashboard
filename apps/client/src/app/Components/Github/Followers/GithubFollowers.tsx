@@ -45,6 +45,7 @@ export const GithubFollowers = (): JSX.Element => {
             type="text"
             placeholder="github id"
             onChange={(e) => setName(e.target.value)}
+            value={name}
           />
         </label>
         <label>
