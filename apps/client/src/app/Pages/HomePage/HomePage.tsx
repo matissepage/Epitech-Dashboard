@@ -14,7 +14,7 @@ import { BsSpotify } from 'react-icons/bs';
 import { TopBar } from '../../Components/TopBar/Topbar';
 
 const Container = styled.div`
-  padding-left: var(--sidebar-width);
+  padding-left: 500px;
 `
 
 
@@ -23,12 +23,12 @@ export const HomePage = () => {
     <>
       <SideBar />
       <Container>
-        <TopBar />
+        {/* <TopBar /> */}
           <Widget icon={<AiFillGoogleCircle />} count="Agenda" title="Google Services"/>
-          <Widget icon={<AiFillGoogleCircle />} count="Agenda" title="Google Services"/>
-          <Widget icon={<AiFillGithub />} count="Agenda" title="Google Services"/>
-          <Widget icon={<BsSpotify />} count="Agenda" title="Google Services"/>
-          <Widget icon={<AiFillGoogleCircle />} count="Agenda" title="Google Services"/>
+          {/* <Widget icon={<AiFillGoogleCircle />} count="Agenda" title="Google Services"/> */}
+          {/* <Widget icon={<AiFillGithub />} count="Agenda" title="Google Services"/> */}
+          {/* <Widget icon={<BsSpotify />} count="Agenda" title="Google Services"/> */}
+          {/* <Widget icon={<AiFillGoogleCircle />} count="Agenda" title="Google Services"/> */}
       </Container>
     </>
   )
