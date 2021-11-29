@@ -11,14 +11,10 @@ export const GithubFollowers = (): JSX.Element => {
   const [name, setName] = useState<string>('');
   const [type, setType] = useState<string>('follower');
 
-  const types: string[] = [
-    'followers',
-    'followings',
-  ];
+  const types: string[] = ['followers', 'followings'];
 
   const putRequest = (): void => {
-    if (name === '' || type === '')
-      return;
+    if (name === '' || type === '') return;
     getFollows(name, type)
       .then((res) => {
         setFollowers(res);
@@ -31,15 +27,17 @@ export const GithubFollowers = (): JSX.Element => {
 
   useEffect(() => {
     putRequest();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Container>
-      <Form onSubmit={(e) => {
-        e.preventDefault();
-        putRequest();
-      }}>
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault();
+          putRequest();
+        }}
+      >
         <label>
           <NameInput
             type="text"
@@ -53,18 +51,16 @@ export const GithubFollowers = (): JSX.Element => {
             labelId="demo-simple-select-standard-label"
             value={type}
             onChange={(e) => {
-              setType(e.target.value as string)
+              setType(e.target.value as string);
             }}
-            label='Follower'
+            label="Follower"
           >
             {types.map((type) => {
-              return (
-                <MenuItem value={type}>{type}</MenuItem>
-              )
+              return <MenuItem value={type}>{type}</MenuItem>;
             })}
           </SelectMenu>
         </label>
-        <input type='submit' value='search' />
+        <input type="submit" value="search" />
       </Form>
       <h1>Github Followers</h1>
       <Ul>
@@ -114,18 +110,18 @@ const SelectMenu = styled(Select)`
   width: 100px;
   height: 25px;
   color: white;
-`
+`;
 
 const NameInput = styled.input`
   width: 100px;
   height: 15px;
   border-color: transparent;
   border-radius: 5px;
-`
+`;
 
 const Form = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-`
+`;

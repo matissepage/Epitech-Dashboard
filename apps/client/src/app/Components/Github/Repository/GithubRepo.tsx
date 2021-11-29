@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getRepositorys } from '../../../services/github/profil';
 import { GithubRepo } from './../../../../../../../shared/github.models';
 import styled from 'styled-components';
-import randomColor from "randomcolor";
+import randomColor from 'randomcolor';
 
 export const GithubRepositorys = (): JSX.Element => {
   const [repositorys, setRepositorys] = useState<GithubRepo[]>([]);
@@ -10,8 +10,7 @@ export const GithubRepositorys = (): JSX.Element => {
   const [name, setName] = useState<string>('');
 
   const putRequest = (): void => {
-    if (name === '')
-      return;
+    if (name === '') return;
     getRepositorys(name)
       .then((res) => {
         setRepositorys(res);
@@ -24,24 +23,26 @@ export const GithubRepositorys = (): JSX.Element => {
 
   useEffect(() => {
     putRequest();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Container>
-      <Form onSubmit={(e) => {
-        e.preventDefault();
-        putRequest();
-      }}>
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault();
+          putRequest();
+        }}
+      >
         <label>
           <NameInput
             type="text"
             placeholder="github id"
             onChange={(e) => setName(e.target.value)}
-            value={name} 
+            value={name}
           />
         </label>
-        <input type='submit' value='search' />
+        <input type="submit" value="search" />
       </Form>
       <h1>Github Repositorys</h1>
       <Ul>
@@ -95,19 +96,19 @@ const Li = styled.li`
 const About = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const Title = styled.h3`
   margin-bottom: 7px;
   font-size: 20px;
   font-weight: 600;
-`
+`;
 
 const Description = styled.p`
   margin-bottom: 20px;
   color: #768390 !important;
   word-wrap: break-word;
-`
+`;
 
 const Logo = styled.div`
   width: 10px;
@@ -118,14 +119,13 @@ const Logo = styled.div`
   margin-left: 10px;
   display: flex;
   align-items: center;
-
-`
+`;
 
 const Language = styled.p`
   margin-left: 20px;
   text-align: center;
   background-color: transparent;
-`
+`;
 
 const MyLink = styled.a`
   text-decoration: none;
@@ -138,11 +138,11 @@ const NameInput = styled.input`
   height: 15px;
   border-color: transparent;
   border-radius: 5px;
-`
+`;
 
 const Form = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-`
+`;
