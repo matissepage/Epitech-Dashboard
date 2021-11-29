@@ -8,26 +8,28 @@ import {
   TB_RightUserImage,
   TB_RightUserName,
   Search,
+  TB_RightUserImageContainer,
 } from './styled';
 
 import {
   AiFillBell
 } from 'react-icons/ai'
 
+import {
+  CgProfile
+} from 'react-icons/cg'
+
 import ProfilePicture from '../../../assets/Profile/profile.png';
 import { Dropdown } from '../DropDown/DropDown';
 import { Link } from 'react-router-dom';
 
-
-// import user_menu from '../../../assets/JsonData/user_menu.json';
-// import notifications from '../../../assets/JsonData/notification.json';
-const user_menu = require('../../../assets/JsonData/user_menu.json');
-const notifications = require('../../../assets/JsonData/notification.json');
+import user_menu from '../../../assets/JsonData/user_menu.json';
+import notifications from '../../../assets/JsonData/notification.json';
 
 
 const curr_user = {
   display_name: 'Matisse',
-  image: {ProfilePicture}
+  image: ''
 }
 
 const renderNotificationItem = (item:any, index:any) => (
@@ -39,12 +41,12 @@ const renderNotificationItem = (item:any, index:any) => (
 
 const renderUserToggle = (user:any) => (
   <TB_RightUser>
-      <TB_RightUserImage>
-          <img src={user.image} alt="" />
-      </TB_RightUserImage>
-      <TB_RightUserName>
-          {user.display_name}
-      </TB_RightUserName>
+    <TB_RightUserImageContainer>
+        <TB_RightUserImage src={ProfilePicture}/>
+    </TB_RightUserImageContainer>
+    <TB_RightUserName>
+        {user.display_name}
+    </TB_RightUserName>
   </TB_RightUser>
 )
 
@@ -58,6 +60,7 @@ const renderUserMenu =(item:any, index:any) => (
 )
 
 export const TopBar = () => {
+  const style = { color: "var(--main-bg)"}
   return (
     <Container>
       <Search>
@@ -72,11 +75,11 @@ export const TopBar = () => {
         </TopBarItem>
         <TopBarItem>
             <Dropdown
-              icon={<AiFillBell />}
+              icon={<AiFillBell style={style}/>}
               badge='3'
               contentData={notifications}
               renderItems={(item:any, index:any) => renderNotificationItem(item, index)}
-              renderFooter={() => <Link to='/'>View All</Link>}
+              renderFooter={() => <Link to='/home'>View All</Link>}
             />
         </TopBarItem>
       </ TopBarRight>

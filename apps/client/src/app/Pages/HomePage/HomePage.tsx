@@ -6,8 +6,6 @@ import { SideBar } from '../../Components/Sidebar/Sidebar';
 import styled from 'styled-components';
 import { Widget } from '../../Components/WidgetCard/WidgetCard';
 import {
-  AiFillCaretDown,
-  AiFillCaretUp,
   AiFillGoogleCircle,
   AiFillGithub,
 } from 'react-icons/ai';
@@ -16,7 +14,6 @@ import { TopBar } from '../../Components/TopBar/Topbar';
 const Container = styled.div`
   padding-left: var(--sidebar-width);
 `
-
 
 export const HomePage = () => {
   return (

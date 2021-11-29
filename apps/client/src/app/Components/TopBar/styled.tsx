@@ -67,15 +67,16 @@ export const TB_RightUser = styled.div`
   align-items: center;
 `
 
-export const TB_RightUserImage = styled.div`
+export const TB_RightUserImageContainer = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
   margin-right: 10px;
-  &:img {
-    width: 100%;
-  }
+`
+
+export const TB_RightUserImage = styled.img`
+  width: 100%;
 `
 
 export const TB_RightUserName = styled.div`
