@@ -5,8 +5,6 @@ import { SideBar } from '../../Components/Sidebar/Sidebar';
 import styled from 'styled-components';
 import { Widget } from '../../Components/WidgetCard/WidgetCard';
 import {
-  AiFillCaretDown,
-  AiFillCaretUp,
   AiFillGoogleCircle,
   AiFillGithub,
 } from 'react-icons/ai';
@@ -19,7 +17,6 @@ import { GithubProfile } from '../../Components/Github/Profil/Profil';
 const Container = styled.div`
   padding-left: 500px;
 `
-
 
 export const HomePage = () => {
   return (
