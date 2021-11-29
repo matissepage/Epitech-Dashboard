@@ -1,6 +1,5 @@
 import React from 'react'
-import phone from './../../../assets/Form/phone.svg';
-import * as Styled from '../../Components/Form/styled'
+import { Rnd } from 'react-rnd';
 import Draggable, { DraggableCore } from 'react-draggable';
 import { SideBar } from '../../Components/Sidebar/Sidebar';
 import styled from 'styled-components';
@@ -11,13 +10,14 @@ import {
   AiFillGoogleCircle,
   AiFillGithub,
 } from 'react-icons/ai';
+import { BsSpotify } from 'react-icons/bs';
 import { TopBar } from '../../Components/TopBar/Topbar';
 import { GithubFollowers } from '../../Components/Github/Followers/GithubFollowers';
 import { GithubRepositorys } from '../../Components/Github/Repository/GithubRepo';
 import { GithubProfile } from '../../Components/Github/Profil/Profil';
 
 const Container = styled.div`
-  padding-left: var(--sidebar-width);
+  padding-left: 500px;
 `
 
 
