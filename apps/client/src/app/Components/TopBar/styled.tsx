@@ -53,6 +53,7 @@ export const NotificationItem = styled.div`
   display: flex;
   align-items: center;
   padding: 20px;
+  color: var(--main-bg);
   &:hover {
     background-color: var(--second-bg);
   }

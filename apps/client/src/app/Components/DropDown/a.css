@@ -36,7 +36,7 @@
   right: 0;
   width: max-content;
   max-width: 400px;
-  background-color: var(--third-bg);
+  background-color: white;
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
   overflow: hidden;
