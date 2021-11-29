@@ -9,6 +9,8 @@ import { TopBar } from '../../Components/TopBar/Topbar';
 import { GithubFollowers } from '../../Components/Github/Followers/GithubFollowers';
 import { GithubRepositorys } from '../../Components/Github/Repository/GithubRepo';
 import { GithubProfile } from '../../Components/Github/Profil/Profil';
+import { AddWidget } from '../../Components/AddButton/AddWidget';
+import { WidgetListGoogle } from '../../Components/AddButton/WidgetList';
 
 const Container = styled.div`
   padding-left: var(--sidebar-width);

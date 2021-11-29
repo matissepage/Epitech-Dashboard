@@ -36,8 +36,7 @@ export const Submenu: FC<SidebarLinkProps> = ({ item }) => {
           </Styled.SidebarLink>
             {subnav && item?.subnav?.map((subnavItem, index) => {
               return (
-                <Styled.DropdownLink onClick={handleClick} key={index}>
-                  {subnavItem.display = handleClick()}
+                <Styled.DropdownLink onClick={showSubnav} key={index}>
                   {subnavItem.icon}
                   <Styled.SidebarLabel>{subnavItem.title}</Styled.SidebarLabel>
                 </Styled.DropdownLink>
