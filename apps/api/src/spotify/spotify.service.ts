@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { SpotifyArtist } from './../../../../shared/spotify.model';
+import { SpotifyArtist, SpotifyTrack } from './../../../../shared/spotify.model';
 import { HttpService } from '@nestjs/axios';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -25,11 +25,35 @@ export class SpotifyService {
       )
       .pipe(
         map((response) => {
-          console.log(response.status.valueOf());
           const res: DashBoardResponse<SpotifyArtist[]> = {
             statusCode: response.status.valueOf(),
             message: response.data !== [] ? 'success' : 'Possible bad id',
             response: response.data.artists.items,
+          };
+          return res;
+        })
+      );
+  }
+
+  searchTrack(
+    search: string,
+    token: string,
+  ): Observable<DashBoardResponse<SpotifyTrack[]>> {
+    return this.httpService
+      .get(
+        `https://api.spotify.com/v1/search?q=${search}&type=track&limit=20`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .pipe(
+        map((response) => {
+          const res: DashBoardResponse<SpotifyTrack[]> = {
+            statusCode: response.status.valueOf(),
+            message: response.data !== [] ? 'success' : 'Possible bad id',
+            response: response.data.tracks.items,
           };
           return res;
         })
