@@ -109,11 +109,9 @@ export const GithubPage = () => {
         {
           widget.map((item, i) => {
             return (
-              <Draggable>
-                <div>
-                  <Widget icon={item.icon} count={item.count} title={item.title} child={item.content}/>
-                </div>
-              </Draggable>
+              <div>
+                <Widget icon={item.icon} count={item.count} title={item.title} child={item.content}/>
+              </div>
             )
           })
         }
