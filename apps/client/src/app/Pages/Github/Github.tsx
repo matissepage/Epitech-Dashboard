@@ -73,8 +73,9 @@ const widgetsAvailable: Widget[] = [
 ]
 
 export const GithubPage = () => {
-  const [widget, setwidget] = useState<any[]>([]);
+  const [widget, setwidget] = useState<Widget[]>([]);
   const style = { color: "var(--txt-color)", width: "25px", paddingTop: "7px"}
+
   const display = (title: string) => {
     if (title === "Github Followers")
       setwidget([...widget, widgetsAvailable[0]])
@@ -102,7 +103,7 @@ export const GithubPage = () => {
           <Dropdown
               icon= {<IoIosAdd style={style}/>}
               contentData={widgetsAvailable}
-              renderItems={(item: any, index:any) => renderList(item, index)}
+              renderItems={(item: any, index: any) => renderList(item, index)}
             />
         </Add>
         {

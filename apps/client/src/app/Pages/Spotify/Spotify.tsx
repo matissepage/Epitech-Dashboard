@@ -74,7 +74,7 @@ const widgetsAvailable: Widget[] = [
 ]
 
 export const SpotifyPage = () => {
-  const [widget, setwidget] = useState<any[]>([]);
+  const [widget, setwidget] = useState<Widget[]>([]);
   const style = { color: "var(--txt-color)", width: "25px", paddingTop: "7px"}
   const display = (title: string) => {
     if (title === "Playlist")
