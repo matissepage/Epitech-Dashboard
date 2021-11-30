@@ -15,9 +15,7 @@ import {
   AiFillBell
 } from 'react-icons/ai'
 
-import {
-  CgProfile
-} from 'react-icons/cg'
+
 
 import ProfilePicture from '../../../assets/Profile/profile.png';
 import { Dropdown } from '../DropDown/DropDown';

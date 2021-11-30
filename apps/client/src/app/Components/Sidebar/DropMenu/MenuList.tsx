@@ -12,36 +12,22 @@ import { MenuItem } from './DropMenu';
 export const MenuList: MenuItem[] = [
   {
     title: 'Google',
-    path: '/home',
+    path: '/google',
     icon: <AiFillGoogleCircle />,
-    iconClosed: <AiFillCaretDown />,
-    iconOpened: <AiFillCaretUp />,
-    subnav: [
-      {
-        title: 'Widget1',
-        path: '/google/widget1',
-        icon: <MdWidgets />
-      },
-      {
-        title: 'Widget2',
-        path: '/google/widget2',
-        icon: <MdWidgets />
-      }
-    ]
   },
   {
     title: 'Github',
-    path: '/home',
+    path: '/github',
     icon: <AiFillGithub />
   },
   {
     title: 'Spotify',
-    path: '/home',
+    path: '/spotify',
     icon: <BsSpotify />
   },
   {
     title: 'Trading',
-    path: '/home',
+    path: '/trading',
     icon: <FaMoneyCheckAlt />
   }
 ];
