@@ -17,7 +17,7 @@ export class SpotifyController {
     return this.spotifyService.searchArtist(id, token, type);
   }
 
-  @Get('/search/track/:id/:token')
+  @Get('/track/:id/:token')
   spotifySearchTrack(
     @Param('id') id: string,
     @Param('token') token: string,

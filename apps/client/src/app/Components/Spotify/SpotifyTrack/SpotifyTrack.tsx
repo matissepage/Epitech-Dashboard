@@ -1,20 +1,19 @@
+import { useState } from 'react';
 import { Select } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { SpotifyArtist } from 'shared/spotify.model';
+import { SpotifyTrack } from 'shared/spotify.model';
 import styled from 'styled-components';
-import { getSearchResult } from '../../../services/spotify/spotify';
+import { getTrackResult } from '../../../services/spotify/spotify';
 import logo from '../../../../assets/Profile/man.png';
 
-export const SpotifySearch = (): JSX.Element => {
-  const [artists, setArtists] = useState<SpotifyArtist[]>([]);
+export const SpotifyTrackWidget = (): JSX.Element => {
+  const [tracks, setTracks] = useState<SpotifyTrack[]>([]);
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState<string>('');
-  const [type, setType] = useState<string>('artist');
 
-  const getSearch = (): void => {
-    getSearchResult(name, type)
+  const getTracks = (): void => {
+    getTrackResult(name)
       .then((res) => {
-        setArtists(res);
+        setTracks(res);
       })
       .catch((err) => console.error(err));
   };
@@ -24,7 +23,7 @@ export const SpotifySearch = (): JSX.Element => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          getSearch();
+          getTracks();
         }}
       >
         <label>
@@ -37,19 +36,33 @@ export const SpotifySearch = (): JSX.Element => {
         </label>
         <input type="submit" value="search" />
       </Form>
-      <h1>Github Followers</h1>
       <Ul>
-        {artists.map((artist, i) => {
+        {tracks.map((track, i) => {
           return (
-            <MyLink href={artist.uri} target="_blank">
-              <Li key={i}>
-                <p>{artist.name}</p>
+            <Li key={i}>
+              <MyLink href={track.external_urls.spotify} target="_blank">
+                <p>{track.name}</p>
+                <Describe>
+                  {track.artists.map((artist, i) => {
+                    return (
+                      <ItemDescribe key={i}>
+                        <p>{artist.name}</p>
+                      </ItemDescribe>
+                    )
+                  })}
+                </Describe>
+              </MyLink>
+              <MyLink href={track.album.external_urls.spotify} target="_blank">
                 <img
-                  src={artist.images?.length > 0 ? artist.images[0].url : logo}
+                  src={
+                    track.album.images.length > 0
+                      ? track.album.images[0].url
+                      : logo
+                  }
                   alt="avatar"
                 />
-              </Li>
-            </MyLink>
+              </MyLink>
+            </Li>
           );
         })}
       </Ul>
@@ -67,10 +80,22 @@ const Ul = styled.ul`
   margin: 10px;
 `;
 
+const Describe = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const ItemDescribe = styled.li`
+  display: flex;
+  flex-direction: row;
+  margin-left: 5px;
+`
+
 const Li = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: row;
   margin-bottom: 5px;
   border-bottom: 1px solid rgba(243, 242, 242, 0.15);
   img {
@@ -83,12 +108,6 @@ const MyLink = styled.a`
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-`;
-
-const SelectMenu = styled(Select)`
-  width: 100px;
-  height: 25px;
-  color: white;
 `;
 
 const NameInput = styled.input`

@@ -17,6 +17,7 @@ import { GithubRepositorys } from '../../Components/Github/Repository/GithubRepo
 import { GithubProfile } from '../../Components/Github/Profil/Profil';
 import { SpotifyArtist } from '../../Components/Spotify/SpotifyArtist/SpotifyArtist';
 import { SpotifySearch } from '../../Components/Spotify/SpotifySearch/SpotifySearch';
+import { SpotifyTrackWidget } from '../../Components/Spotify/SpotifyTrack/SpotifyTrack';
 
 const Container = styled.div`
   padding-left: 500px;
@@ -52,6 +53,11 @@ export const HomePage = () => {
         <Draggable>
           <div>
             <Widget icon={BsSpotify} count="Artist" title="Artist" child={SpotifySearch} />
+          </div>
+        </Draggable>
+        <Draggable>
+          <div>
+            <Widget icon={BsSpotify} count="Artist" title="Artist" child={SpotifyTrackWidget} />
           </div>
         </Draggable>
       </Container>
