@@ -12,6 +12,9 @@ import { GithubProfile } from '../../Components/Github/Profil/Profil';
 import { IconType } from 'react-icons/lib';
 import { Dropdown } from '../../Components/DropDown/DropDown';
 import { IoIosAdd } from 'react-icons/io';
+import { SpotifyArtist } from '../../Components/Spotify/SpotifyArtist/SpotifyArtist';
+import { SpotifyTrackWidget } from '../../Components/Spotify/SpotifyTrack/SpotifyTrack';
+import { SpotifySearch } from '../../Components/Spotify/SpotifySearch/SpotifySearch';
 
 const Container = styled.div`
   padding-left: var(--sidebar-width);
@@ -54,22 +57,22 @@ interface Widget {
 
 const widgetsAvailable: Widget[] = [
   {
-    title: 'Playlist',
+    title: 'Artists',
     count: 'test',
     icon: BsSpotify,
-    content: GithubFollowers,
+    content: SpotifyArtist,
   },
   {
-    title: 'Ecoute en cours',
+    title: 'Tracks',
     count: 'test',
     icon: BsSpotify,
-    content: GithubRepositorys,
+    content: SpotifyTrackWidget,
   },
   {
-    title: 'Profile',
+    title: 'Listen',
     count: 'test',
     icon: BsSpotify,
-    content: GithubProfile,
+    content: SpotifySearch,
   },
 ]
 
@@ -77,11 +80,11 @@ export const SpotifyPage = () => {
   const [widget, setwidget] = useState<Widget[]>([]);
   const style = { color: "var(--txt-color)", width: "25px", paddingTop: "7px"}
   const display = (title: string) => {
-    if (title === "Playlist")
+    if (title === "Artists")
       setwidget([...widget, widgetsAvailable[0]])
-    else if (title === "Ecoute en cours")
+    else if (title === "Tracks")
       setwidget([...widget, widgetsAvailable[1]])
-    else if (title === "Profile")
+    else if (title === "Listen")
       setwidget([...widget, widgetsAvailable[2]])
   }
 
@@ -109,11 +112,9 @@ export const SpotifyPage = () => {
         {
           widget.map((item, i) => {
             return (
-              <Draggable>
-                <div>
-                  <Widget icon={item.icon} count={item.count} title={item.title} child={item.content}/>
-                </div>
-              </Draggable>
+              <div>
+                <Widget icon={item.icon} count={item.count} title={item.title} child={item.content}/>
+              </div>
             )
           })
         }

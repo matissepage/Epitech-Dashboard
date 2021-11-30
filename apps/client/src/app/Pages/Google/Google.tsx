@@ -81,9 +81,9 @@ export const GooglePage = () => {
         {
           widget.map((item, i) => {
             return (
-                <div>
-                  <Widget icon={item.icon} count={item.count} title={item.title} child={item.content}/>
-                </div>
+              <div>
+                <Widget icon={item.icon} count={item.count} title={item.title} child={item.content}/>
+              </div>
             )
           })
         }
