@@ -19,6 +19,12 @@ interface Props {
   child: () => JSX.Element,
 }
 
+interface PropsRe {
+  icon: IconType,
+  count: string,
+  title: string,
+  child: any,
+}
 const style = {
   padding: "30px",
   height: "fit-content",
@@ -39,6 +45,26 @@ const style = {
 } as const
 
 export const Widget: React.FC<Props> = (props) => {
+  return (
+    <Rnd
+    style={style}>
+      <WidgetCardTop>
+        <WidgetCardIcon>
+          {React.createElement(props.icon)}
+        </WidgetCardIcon>
+        <WidgetCardInfo>
+          <h4>{props.count}</h4>
+          <span>{props.title}</span>
+        </WidgetCardInfo>
+      </WidgetCardTop>
+      <WidgetCardContent>
+        {props.child()}
+      </WidgetCardContent>
+    </Rnd>
+  )
+}
+
+export const WidgetRe: React.FC<PropsRe> = (props) => {
   return (
     <Rnd
     style={style}>
