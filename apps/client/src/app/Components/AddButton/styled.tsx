@@ -16,3 +16,17 @@ align-items: center;
 justify-content: center;
 cursor: pointer;
 `
+
+export const WidgetItem = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  color: var(--main-bg);
+  &:hover {
+    background-color: var(--second-bg);
+  }
+  &:i {
+    margin-right: 20px;
+    font-size: 1.5rem;
+  }
+`
