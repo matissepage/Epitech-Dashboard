@@ -1,5 +1,5 @@
 import React from "react";
-import { setDivRef, ColorTheme } from "./utils";
+import { SetDivRef, ColorTheme } from "./utils";
 
 type DefaultColumnForexOrCrypto =
   //forex, crypto
@@ -113,7 +113,7 @@ export const Screener: React.FC<ScreenerProps> = ({
   largeChartUrl = undefined,
   ...props
 }) => {
-  return setDivRef(
+  return SetDivRef(
     {
       ...(!autosize ? { width } : { width: "100%" }),
       ...(!autosize ? { height } : { height: "100%" }),

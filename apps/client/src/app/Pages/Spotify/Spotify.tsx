@@ -58,19 +58,19 @@ interface Widget {
 const widgetsAvailable: Widget[] = [
   {
     title: 'Artists',
-    count: 'test',
+    count: 'Widget',
     icon: BsSpotify,
     content: SpotifyArtist,
   },
   {
     title: 'Tracks',
-    count: 'test',
+    count: 'Widget',
     icon: BsSpotify,
     content: SpotifyTrackWidget,
   },
   {
     title: 'Listen',
-    count: 'test',
+    count: 'Widget',
     icon: BsSpotify,
     content: SpotifySearch,
   },

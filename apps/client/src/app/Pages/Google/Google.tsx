@@ -32,13 +32,13 @@ interface Widget {
 const widgetsAvailable: Widget[] = [
   {
     title: 'Google Maps',
-    count: 'test',
+    count: 'Widget',
     icon: AiFillGoogleCircle,
     content: GithubFollowers,
   },
   {
     title: 'Youtube',
-    count: 'test',
+    count: 'Widget',
     icon: AiFillGoogleCircle,
     content: GithubFollowers,
   },

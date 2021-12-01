@@ -1,5 +1,5 @@
 import React from "react";
-import { setDivRef, ColorTheme, DateRange } from "./utils";
+import { SetDivRef, ColorTheme, DateRange } from "./utils";
 
 export type ChartProps = {
   symbol?: string;
@@ -33,7 +33,7 @@ export const Chart: React.FC<ChartProps> = ({
   largeChartUrl = undefined,
   ...props
 }) => {
-  return setDivRef(
+  return SetDivRef(
     {
       symbol,
       ...(!autosize ? { width } : { width: "100%" }),

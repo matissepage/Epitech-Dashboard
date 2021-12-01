@@ -1,5 +1,5 @@
 import React from "react";
-import { setDivRef, ColorTheme, DateRange } from "./utils";
+import { SetDivRef, ColorTheme, DateRange } from "./utils";
 
 export type StockMarketProps = {
   colorTheme?: ColorTheme;
@@ -82,7 +82,7 @@ export const StockMarket: React.FC<StockMarketProps> = ({
   symbolActiveColor = "rgba(33, 150, 243, 0.12)",
   ...props
 }) => {
-  return setDivRef(
+  return SetDivRef(
     {
       colorTheme,
       dateRange,

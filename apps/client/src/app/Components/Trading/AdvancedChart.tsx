@@ -1,5 +1,5 @@
 import React from "react";
-import { createId, setDivRef, ColorTheme } from "./utils";
+import { createId, SetDivRef, ColorTheme } from "./utils";
 
 export type AdvancedRealTimeChartProps = {
   width?: number | string;
@@ -74,7 +74,7 @@ export const AdvancedChart:React.FC<AdvancedRealTimeChartProps> = ({
   container_id = `tradingview_${createId(5)}`,
   ...props
 }) => {
-  return setDivRef(
+  return SetDivRef(
     {
       ...(!autosize ? { width } : { width: "100%" }),
       ...(!autosize ? { height } : { height: "100%" }),

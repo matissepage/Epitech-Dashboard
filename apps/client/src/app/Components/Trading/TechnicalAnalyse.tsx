@@ -1,5 +1,5 @@
 import React from "react";
-import { setDivRef, ColorTheme } from "./utils";
+import { SetDivRef, ColorTheme } from "./utils";
 
 export type TechnicalAnalysisProps = {
   interval?: "1m" | "5m" | "15m" | "1h" | "4h" | "1D" | "1W" | "1M";
@@ -28,7 +28,7 @@ export const TechnicalAnalysis: React.FC<TechnicalAnalysisProps> = ({
   largeChartUrl = undefined,
   ...props
 }) => {
-  return setDivRef(
+  return SetDivRef(
     {
       interval,
       ...(!autosize ? { width } : { width: "100%" }),

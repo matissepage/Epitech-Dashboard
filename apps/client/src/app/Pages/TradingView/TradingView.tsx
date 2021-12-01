@@ -75,24 +75,6 @@ const widgetsAvailable: Widget[] = [
   }
 ]
 
-const styleWidget = {
-  padding: "30px",
-  height: "fit-content",
-  width: "6000px",
-  display: "flex",
-  alignItems: "center",
-  flexDirection: "column",
-  backgroundColor: "var(--main-bg)",
-  boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2)",
-  borderRadius: "10px",
-  position: "relative",
-  overflow: "hidden",
-  zIndex: 1,
-  transition: "color 0.5s ease 0s",
-  marginBottom: "30px",
-  color: "var(--txt-color)"
-} as const
-
 
 export const TradingViewPage = () => {
   const [widget, setwidget] = useState<Widget[]>([]);
@@ -103,15 +85,15 @@ export const TradingViewPage = () => {
       setwidget([...widget, widgetsAvailable[0]])
     else if (title === "CryptoCalendar")
       setwidget([...widget, widgetsAvailable[1]])
-    else if (title == "ForexCrossRates")
+    else if (title === "ForexCrossRates")
       setwidget([...widget, widgetsAvailable[2]])
-    else if (title == "StockMarket")
+    else if (title === "StockMarket")
       setwidget([...widget, widgetsAvailable[3]])
-    else if (title == "EconomicCalendar")
+    else if (title === "EconomicCalendar")
       setwidget([...widget, widgetsAvailable[4]])
-    else if (title == "CompanyProfile")
+    else if (title === "CompanyProfile")
       setwidget([...widget, widgetsAvailable[5]])
-    else if (title == "CompanyProfile")
+    else
       setwidget([...widget, widgetsAvailable[5]])
   }
 

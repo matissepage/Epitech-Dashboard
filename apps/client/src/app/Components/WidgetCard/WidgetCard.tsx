@@ -16,7 +16,7 @@ interface Props<T> {
   icon: IconType,
   count: string,
   title: string,
-  child: (() => JSX.Element) | React.FC<T>,
+  child: React.FC<T> | (() => JSX.Element),
 }
 
 interface PropsRe {

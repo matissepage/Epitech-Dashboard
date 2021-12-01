@@ -1,4 +1,4 @@
-import { setDivRef } from './utils'
+import { SetDivRef } from './utils'
 
 export type ColorTheme = "light" | "dark";
 
@@ -38,7 +38,7 @@ export const ForexCrossRates: React.FC<ForexCrossRatesProps> = ({
   largeChartUrl = undefined,
   ...props
   }) => {
-  return setDivRef(
+  return SetDivRef(
     {
       ...(!autosize ? { width } : { width: "100%" }),
       ...(!autosize ? { height } : { height: "100%" }),

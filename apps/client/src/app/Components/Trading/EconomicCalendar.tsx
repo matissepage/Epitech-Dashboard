@@ -1,5 +1,5 @@
 import React from "react";
-import { setDivRef, ColorTheme } from "./utils";
+import { SetDivRef, ColorTheme } from "./utils";
 
 export type EconomicCalendarProps = {
   colorTheme?: ColorTheme;
@@ -25,7 +25,7 @@ export const EconomicCalendar: React.FC<EconomicCalendarProps> = ({
   currencyFilter = undefined,
   ...props
 }) => {
-  return setDivRef(
+  return SetDivRef(
     {
       colorTheme,
       isTransparent,

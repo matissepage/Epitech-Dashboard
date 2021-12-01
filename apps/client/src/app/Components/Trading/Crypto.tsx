@@ -1,5 +1,5 @@
 import React from "react";
-import { setDivRef, ColorTheme } from "./utils";
+import { SetDivRef, ColorTheme } from "./utils";
 
 export type CryptoCurrencyMarketProps = {
   width?: string | number;
@@ -32,7 +32,7 @@ export const CryptoCurrencyMarket: React.FC<CryptoCurrencyMarketProps> = ({
   isTransparent = false,
   ...props
 }) => {
-  return setDivRef(
+  return SetDivRef(
     {
       ...(!autosize ? { width } : { width: "100%" }),
       ...(!autosize ? { height } : { height: "100%" }),
