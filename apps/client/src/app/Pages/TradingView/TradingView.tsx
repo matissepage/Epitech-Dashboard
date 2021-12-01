@@ -20,17 +20,8 @@ import {
   Add,
   WidgetItem
 } from '../styled'
-
-import {
-  WidgetCard, 
-  WidgetCardIcon, 
-  WidgetCardInfo,
-  WidgetCardContent,
-  WidgetCardTop,
-} from '../../Components/WidgetCard/styled';
 import { IconType } from 'react-icons/lib';
-import { WidgetRe } from '../../Components/WidgetCard/WidgetCard';
-import { Rnd } from 'react-rnd';
+import { Widget } from '../../Components/WidgetCard/WidgetCard';
 
 interface Widget {
   title: string
@@ -42,16 +33,46 @@ interface Widget {
 const widgetsAvailable: Widget[] = [
   {
     title: 'AdvancedChart',
-    count: 'test',
+    count: 'Trading',
     icon: FaMoneyCheckAlt,
     content: AdvancedChart,
   },
   {
     title: 'CryptoCalendar',
-    count: 'test',
+    count: 'Trading',
     icon: FaMoneyCheckAlt,
     content: CryptoCurrencyMarket,
   },
+  {
+    title: 'ForexCrossRates',
+    count: 'Trading',
+    icon: FaMoneyCheckAlt,
+    content: ForexCrossRates,
+  },
+  {
+    title: 'StockMarket',
+    count: 'Trading',
+    icon: FaMoneyCheckAlt,
+    content: StockMarket,
+  },
+  {
+    title: 'EconomicCalendar',
+    count: 'Trading',
+    icon: FaMoneyCheckAlt,
+    content: EconomicCalendar,
+  },
+  {
+    title: 'CompanyProfile',
+    count: 'Trading',
+    icon: FaMoneyCheckAlt,
+    content: CompanyProfile,
+  },
+  {
+    title: 'Screener',
+    count: 'Trading',
+    icon: FaMoneyCheckAlt,
+    content: Screener,
+  }
 ]
 
 const styleWidget = {
@@ -82,6 +103,16 @@ export const TradingViewPage = () => {
       setwidget([...widget, widgetsAvailable[0]])
     else if (title === "CryptoCalendar")
       setwidget([...widget, widgetsAvailable[1]])
+    else if (title == "ForexCrossRates")
+      setwidget([...widget, widgetsAvailable[2]])
+    else if (title == "StockMarket")
+      setwidget([...widget, widgetsAvailable[3]])
+    else if (title == "EconomicCalendar")
+      setwidget([...widget, widgetsAvailable[4]])
+    else if (title == "CompanyProfile")
+      setwidget([...widget, widgetsAvailable[5]])
+    else if (title == "CompanyProfile")
+      setwidget([...widget, widgetsAvailable[5]])
   }
 
   const renderList =(item: any, index:any) => (
@@ -105,111 +136,15 @@ export const TradingViewPage = () => {
               renderItems={(item: any, index:any) => renderList(item, index)}
             />
         </Add>
-        <Container>
-          <Rnd style={styleWidget} minHeight={600} minWidth={950}>
-            <WidgetCardTop>
-              <WidgetCardIcon>
-                {React.createElement(FaMoneyCheckAlt)}
-              </WidgetCardIcon>
-            <WidgetCardInfo>
-              <h4>Crypto</h4>
-              <span>Trading</span>
-            </WidgetCardInfo>
-            </WidgetCardTop>
-            <WidgetCardContent>
-              <AdvancedChart />
-            </WidgetCardContent>
-          </Rnd>
-        </Container>
-        <Container>
-          <Rnd style={styleWidget} minHeight={600} minWidth={950}>
-            <WidgetCardTop>
-              <WidgetCardIcon>
-                {React.createElement(FaMoneyCheckAlt)}
-              </WidgetCardIcon>
-            <WidgetCardInfo>
-              <h4>Crypto</h4>
-              <span>Trading</span>
-            </WidgetCardInfo>
-            </WidgetCardTop>
-            <WidgetCardContent>
-              <ForexCrossRates />
-            </WidgetCardContent>
-          </Rnd>
-        </Container>
-        <Container>
-          <Rnd style={styleWidget} minHeight={600} minWidth={950}>
-            <WidgetCardTop>
-              <WidgetCardIcon>
-                {React.createElement(FaMoneyCheckAlt)}
-              </WidgetCardIcon>
-            <WidgetCardInfo>
-              <h4>Crypto</h4>
-              <span>Trading</span>
-            </WidgetCardInfo>
-            </WidgetCardTop>
-            <WidgetCardContent>
-              <StockMarket />
-            </WidgetCardContent>
-          </Rnd>
-        </Container>
-        <Container>
-          <Rnd style={styleWidget} minHeight={600} minWidth={950}>
-            <WidgetCardTop>
-              <WidgetCardIcon>
-                {React.createElement(FaMoneyCheckAlt)}
-              </WidgetCardIcon>
-            <WidgetCardInfo>
-              <h4>Crypto</h4>
-              <span>Trading</span>
-            </WidgetCardInfo>
-            </WidgetCardTop>
-            <WidgetCardContent>
-              <EconomicCalendar />
-            </WidgetCardContent>
-          </Rnd>
-        </Container>
-        <Container>
-          <Rnd style={styleWidget} minHeight={600} minWidth={950}>
-            <WidgetCardTop>
-              <WidgetCardIcon>
-                {React.createElement(FaMoneyCheckAlt)}
-              </WidgetCardIcon>
-            <WidgetCardInfo>
-              <h4>Crypto</h4>
-              <span>Trading</span>
-            </WidgetCardInfo>
-            </WidgetCardTop>
-            <WidgetCardContent>
-              <Screener />
-            </WidgetCardContent>
-          </Rnd>
-        </Container>
-        <Container>
-          <Rnd style={styleWidget} minHeight={600} minWidth={950}>
-            <WidgetCardTop>
-              <WidgetCardIcon>
-                {React.createElement(FaMoneyCheckAlt)}
-              </WidgetCardIcon>
-            <WidgetCardInfo>
-              <h4>Crypto</h4>
-              <span>Trading</span>
-            </WidgetCardInfo>
-            </WidgetCardTop>
-            <WidgetCardContent>
-              <CryptoCurrencyMarket />
-            </WidgetCardContent>
-          </Rnd>
-        </Container>
-        {/* <ForexCrossRates />
-        <Chart />
-        <StockMarket />
-        <EconomicCalendar />
-        <Screener />
-        <TechnicalAnalysis />
-        <AdvancedChart />
-        <CompanyProfile />
-        <CryptoCurrencyMarket /> */}
+        {
+          widget.map((item, i) => {
+            return (
+              <div>
+                <Widget icon={item.icon} count={item.count} title={item.title} child={item.content}/>
+              </div>
+            )
+          })
+        }
       </Container>
     </>
   )

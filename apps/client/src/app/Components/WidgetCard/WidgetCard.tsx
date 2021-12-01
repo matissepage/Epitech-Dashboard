@@ -12,11 +12,11 @@ import Draggable from 'react-draggable';
 import { Rnd } from 'react-rnd';
 
 
-interface Props {
+interface Props<T> {
   icon: IconType,
   count: string,
   title: string,
-  child: () => JSX.Element,
+  child: (() => JSX.Element) | React.FC<T>,
 }
 
 interface PropsRe {
@@ -44,10 +44,11 @@ const style = {
   color: "var(--txt-color)"
 } as const
 
-export const Widget: React.FC<Props> = (props) => {
+export const Widget: React.FC<Props<any>> = (props) => {
   return (
     <Rnd
-    style={style}>
+    style={style}
+    >
       <WidgetCardTop>
         <WidgetCardIcon>
           {React.createElement(props.icon)}
@@ -58,27 +59,7 @@ export const Widget: React.FC<Props> = (props) => {
         </WidgetCardInfo>
       </WidgetCardTop>
       <WidgetCardContent>
-        {props.child()}
-      </WidgetCardContent>
-    </Rnd>
-  )
-}
-
-export const WidgetRe: React.FC<PropsRe> = (props) => {
-  return (
-    <Rnd
-    style={style}>
-      <WidgetCardTop>
-        <WidgetCardIcon>
-          {React.createElement(props.icon)}
-        </WidgetCardIcon>
-        <WidgetCardInfo>
-          <h4>{props.count}</h4>
-          <span>{props.title}</span>
-        </WidgetCardInfo>
-      </WidgetCardTop>
-      <WidgetCardContent>
-        {props.child()}
+        {React.createElement(props.child)}
       </WidgetCardContent>
     </Rnd>
   )
