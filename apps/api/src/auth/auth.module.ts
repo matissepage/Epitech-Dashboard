@@ -7,6 +7,7 @@ import { Gitlabtrategy } from './gitlab.strategy';
 import { GoogleStrategy } from './google.strategy';
 import { LinkedinStrategy } from './linkedin.strategy';
 import { SpotidyStrategy } from './spotify.strategy';
+import { YoutubeStrategy } from './youtube.strategy';
 
 @Module({
   controllers: [AuthController],
@@ -18,6 +19,7 @@ import { SpotidyStrategy } from './spotify.strategy';
     LinkedinStrategy,
     DiscordStrategy,
     Gitlabtrategy,
+    YoutubeStrategy,
   ],
 })
 export class AuthModule {}

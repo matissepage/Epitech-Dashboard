@@ -116,4 +116,22 @@ export class AuthController {
         '&provider=gitlab',
     };
   }
+
+  // Youtube Connection
+  @Get('/youtube')
+  @UseGuards(AuthGuard('google'))
+  async youtubeAuth(@Req() req: Request) {}
+
+  @Get('/youtube/redirect')
+  @UseGuards(AuthGuard('google'))
+  @Redirect()
+  youtubeAuthCallback(@Req() req: Request) {
+    const body = this.authService.youtubeLogin(req);
+    return {
+      url:
+        'http://localhost:3000/auth/success?access_token=' +
+        body.user.accessToken +
+        '&provider=youtube',
+    };
+  }
 }

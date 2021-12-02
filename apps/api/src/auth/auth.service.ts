@@ -75,4 +75,16 @@ export class AuthService {
       user: req.user,
     };
   }
+
+  youtubeLogin(req: Request): { message: string; user: any } {
+    if (!req.user)
+      return {
+        message: 'no user for youtube',
+        user: {},
+      };
+    return {
+      message: 'User information from youtube',
+      user: req.user,
+    };
+  }
 }
