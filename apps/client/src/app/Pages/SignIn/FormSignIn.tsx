@@ -82,7 +82,7 @@ const loginMap: LoginSSO[] = [
 ];
 
 export const FormSignIn: React.FC<Props> = ({ submitForm }) => {
-  const { handleChange, values, handleSubmit, errors } = useForm(
+  const { handleChange, values, handleSubmitLogin, errors } = useForm(
     submitForm,
     validate
   );
@@ -98,7 +98,7 @@ export const FormSignIn: React.FC<Props> = ({ submitForm }) => {
 
   return (
     <FormContentRight>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmitLogin}>
         <FormH1>Create your account ! </FormH1>
         <FormInputs>
           <FormLabel htmlFor="username">Username : </FormLabel>
