@@ -1,8 +1,16 @@
 import React from 'react';
 import { useForm } from '../../Components/Form/useForm';
 import validate from '../../Components/Form/validateInfo';
-import star from './../../../assets/Form/star.svg';
-import * as Styled from '../../Components/Form/styled';
+import {
+  FormContentRight,
+  Form,
+  FormH1,
+  FormInputs,
+  FormInput,
+  FormLabel,
+  FormInputBtn,
+  FormInputLogin,
+} from '../../Components/Form/styled';
 import { ButtonLogin } from '../../Components/ButtonLogin/ButtonLogin';
 import styled from 'styled-components';
 import { FcGoogle } from 'react-icons/fc';
@@ -89,58 +97,36 @@ export const FormSignIn: React.FC<Props> = ({ submitForm }) => {
   };
 
   return (
-    <div>
-      <Styled.FormContainer>
-        <Styled.CloseButton />
-        <Styled.FormContentLeft>
-          <Styled.FormImg src={star} alt="spaceship" />
-        </Styled.FormContentLeft>
-        <Styled.FormContentRight>
-          <Styled.Form onSubmit={handleSubmit}>
-            <Styled.FormH1>Welcome Back ! </Styled.FormH1>
-            <Styled.FormInputs>
-              <Styled.FormLabel htmlFor="username">
-                Username :{' '}
-              </Styled.FormLabel>
-              <Styled.FormInput
-                id="username"
-                type="text"
-                name="username"
-                placeholder="Enter your username"
-                value={values.username}
-                onChange={handleChange}
-              />
-              {errors.username && <p>{errors.username}</p>}
-            </Styled.FormInputs>
-            <Styled.FormInputs>
-              <Styled.FormLabel htmlFor="email">Email : </Styled.FormLabel>
-              <Styled.FormInput
-                id="email"
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                value={values.email}
-                onChange={handleChange}
-              />
-              {errors.email && <p>{errors.email}</p>}
-            </Styled.FormInputs>
-            <Styled.FormInputs>
-              <Styled.FormLabel htmlFor="password">
-                Password :{' '}
-              </Styled.FormLabel>
-              <Styled.FormInput
-                id="password"
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                value={values.password}
-                onChange={handleChange}
-              />
-              {errors.password && <p>{errors.password}</p>}
-            </Styled.FormInputs>
-            <Styled.FormInputs>
-              <LoginOauthContainer>
-                {loginMap.map((item, index) => {
+    <FormContentRight>
+      <Form onSubmit={handleSubmit}>
+        <FormH1>Create your account ! </FormH1>
+        <FormInputs>
+          <FormLabel htmlFor="username">Username : </FormLabel>
+            <FormInput
+            id="username"
+            type="text"
+            name="username"
+            placeholder="Enter your username"
+            value={values.username}
+            onChange={handleChange}
+            />
+            {errors.username && <p>{errors.username}</p>}
+        </FormInputs>
+        <FormInputs>
+          <FormLabel htmlFor="password" className='form-label'>Password : </FormLabel>
+            <FormInput
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              value={values.password}
+              onChange={handleChange}
+            />
+            {errors.password && <p>{errors.password}</p>}
+        </FormInputs>
+        <FormInputs>
+          <LoginOauthContainer>
+            {loginMap.map((item, index) => {
                   return (
                     <ButtonLogin
                       icon={item.icon}
@@ -155,19 +141,18 @@ export const FormSignIn: React.FC<Props> = ({ submitForm }) => {
                       }
                     />
                   );
-                })}
-              </LoginOauthContainer>
-            </Styled.FormInputs>
-            <Styled.FormInputBtn type="submit">Sign up</Styled.FormInputBtn>
-            <Styled.FormInputLogin>
-              Create an account ? <a href="/">here</a>
-            </Styled.FormInputLogin>
-          </Styled.Form>
-        </Styled.FormContentRight>
-      </Styled.FormContainer>
-    </div>
+            })}
+          </LoginOauthContainer>
+        </FormInputs>
+        <FormInputBtn type="submit">Sign up</FormInputBtn>
+        <FormInputLogin>Already have an account ? Login <a href='signin'>here</a></FormInputLogin>
+      </Form>
+    </FormContentRight>
   );
 };
+
+
+
 
 const LoginOauthContainer = styled.div`
   display: flex;

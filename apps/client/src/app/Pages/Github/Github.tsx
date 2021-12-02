@@ -54,19 +54,19 @@ interface Widget {
 const widgetsAvailable: Widget[] = [
   {
     title: 'Github Followers',
-    count: 'test',
+    count: 'Widget',
     icon: AiFillGithub,
     content: GithubFollowers,
   },
   {
     title: 'Github Repository',
-    count: 'test',
+    count: 'Widget',
     icon: AiFillGithub,
     content: GithubRepositorys,
   },
   {
     title: 'Github Profile',
-    count: 'test',
+    count: 'Widget',
     icon: AiFillGithub,
     content: GithubProfile,
   },
