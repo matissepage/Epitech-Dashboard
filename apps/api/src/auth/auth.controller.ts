@@ -62,4 +62,40 @@ export class AuthController {
         '&provider=spotify',
     };
   }
+
+  // Linkedin Connection
+  @Get('/linkedin')
+  @UseGuards(AuthGuard('linkedin'))
+  async linkedinAuth(@Req() req: Request) {}
+
+  @Get('/linkedin/redirect')
+  @UseGuards(AuthGuard('linkedin'))
+  @Redirect()
+  linkedinAuthCallback(@Req() req: Request) {
+    const body = this.authService.linkedinLogin(req);
+    return {
+      url:
+        'http://localhost:3000/auth/success?access_token=' +
+        body.user.accessToken +
+        '&provider=linkedin',
+    };
+  }
+
+  // Discord Connection
+  @Get('/discord')
+  @UseGuards(AuthGuard('discord'))
+  async discordAuth(@Req() req: Request) {}
+
+  @Get('/discord/redirect')
+  @UseGuards(AuthGuard('discord'))
+  @Redirect()
+  discordAuthCallback(@Req() req: Request) {
+    const body = this.authService.discordLogin(req);
+    return {
+      url:
+        'http://localhost:3000/auth/success?access_token=' +
+        body.user.accessToken +
+        '&provider=discord',
+    };
+  }
 }

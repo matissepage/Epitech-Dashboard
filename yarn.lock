@@ -8315,12 +8315,26 @@ parseurl@~1.3.2, parseurl@~1.3.3:
   resolved "https://registry.npmjs.org/parseurl/-/parseurl-1.3.3.tgz"
   integrity sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==
 
+passport-discord@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/passport-discord/-/passport-discord-0.1.4.tgz#9265be11952cdd54d77c47eaae352834444cf0f6"
+  integrity sha512-VJWPYqSOmh7SaCLw/C+k1ZqCzJnn2frrmQRx1YrcPJ3MQ+Oa31XclbbmqFICSvl8xv3Fqd6YWQ4H4p1MpIN9rA==
+  dependencies:
+    passport-oauth2 "^1.5.0"
+
 passport-github@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/passport-github/-/passport-github-1.1.0.tgz#8ce1e3fcd61ad7578eb1df595839e4aea12355d4"
   integrity sha1-jOHj/NYa11eOsd9ZWDnkrqEjVdQ=
   dependencies:
     passport-oauth2 "1.x.x"
+
+passport-gitlab2@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/passport-gitlab2/-/passport-gitlab2-5.0.0.tgz#ea37e5285321c026a02671e87469cac28cce9b69"
+  integrity sha512-cXQMgM6JQx9wHVh7JLH30D8fplfwjsDwRz+zS0pqC8JS+4bNmc1J04NGp5g2M4yfwylH9kQRrMN98GxMw7q7cg==
+  dependencies:
+    passport-oauth2 "^1.4.0"
 
 passport-google-oauth1@1.x.x:
   version "1.0.0"
@@ -8352,6 +8366,13 @@ passport-jwt@^4.0.0:
     jsonwebtoken "^8.2.0"
     passport-strategy "^1.0.0"
 
+passport-linkedin-oauth2@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/passport-linkedin-oauth2/-/passport-linkedin-oauth2-2.0.0.tgz#c320374baa44c1412a9b023590d1d0c1c77cfe73"
+  integrity sha512-PnSeq2HzFQ/y1/p2RTF/kG2zhJ7kwGVg4xO3E+JNxz2aI0pFJGAqC503FVpUksYbhQdNhL6QYlK9qrEXD7ZYCg==
+  dependencies:
+    passport-oauth2 "1.x.x"
+
 passport-local@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/passport-local/-/passport-local-1.0.0.tgz#1fe63268c92e75606626437e3b906662c15ba6ee"
@@ -8368,7 +8389,7 @@ passport-oauth1@1.x.x:
     passport-strategy "1.x.x"
     utils-merge "1.x.x"
 
-passport-oauth2@1.x.x:
+passport-oauth2@1.x.x, passport-oauth2@^1.1.2, passport-oauth2@^1.4.0, passport-oauth2@^1.5.0:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/passport-oauth2/-/passport-oauth2-1.6.1.tgz#c5aee8f849ce8bd436c7f81d904a3cd1666f181b"
   integrity sha512-ZbV43Hq9d/SBSYQ22GOiglFsjsD1YY/qdiptA+8ej+9C1dL1TVB+mBE5kDH/D4AJo50+2i8f4bx0vg4/yDDZCQ==
@@ -8379,13 +8400,21 @@ passport-oauth2@1.x.x:
     uid2 "0.0.x"
     utils-merge "1.x.x"
 
-passport-oauth@1.0.0:
+passport-oauth@1.0.0, passport-oauth@1.x, passport-oauth@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/passport-oauth/-/passport-oauth-1.0.0.tgz#90aff63387540f02089af28cdad39ea7f80d77df"
   integrity sha1-kK/2M4dUDwIImvKM2tOep/gNd98=
   dependencies:
     passport-oauth1 "1.x.x"
     passport-oauth2 "1.x.x"
+
+passport-reddit@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/passport-reddit/-/passport-reddit-0.2.4.tgz#4e5805d919a8f28f80c238f7da2d92a38067acc5"
+  integrity sha1-TlgF2Rmo8o+Awjj32i2So4BnrMU=
+  dependencies:
+    passport-oauth "1.x"
+    pkginfo "0.3.x"
 
 passport-spotify@^2.0.0:
   version "2.0.0"
@@ -8400,6 +8429,22 @@ passport-strategy@1.x.x, passport-strategy@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/passport-strategy/-/passport-strategy-1.0.0.tgz#b5539aa8fc225a3d1ad179476ddf236b440f52e4"
   integrity sha1-tVOaqPwiWj0a0XlHbd8ja0QPUuQ=
+
+passport-twitch@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/passport-twitch/-/passport-twitch-1.0.3.tgz#82a4a1fbe19368d44e62f057e93c414a9d4fe7cc"
+  integrity sha1-gqSh++GTaNROYvBX6TxBSp1P58w=
+  dependencies:
+    passport-oauth2 "^1.1.2"
+    pkginfo "0.2.x"
+
+passport-twitchtv@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/passport-twitchtv/-/passport-twitchtv-0.1.4.tgz#403d067d65f11f5d9f8cc70bb732cf9d3d386cc6"
+  integrity sha1-QD0GfWXxH12fjMcLtzLPnT04bMY=
+  dependencies:
+    passport-oauth "~1.0.0"
+    pkginfo "~0.3.0"
 
 passport@^0.5.0:
   version "0.5.0"
@@ -8589,6 +8634,16 @@ pkg-dir@^4.1.0, pkg-dir@^4.2.0:
   integrity sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
   dependencies:
     find-up "^4.0.0"
+
+pkginfo@0.2.x:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.2.3.tgz#7239c42a5ef6c30b8f328439d9b9ff71042490f8"
+  integrity sha1-cjnEKl72wwuPMoQ52bn/cQQkkPg=
+
+pkginfo@0.3.x, pkginfo@~0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.3.1.tgz#5b29f6a81f70717142e09e765bbeab97b4f81e21"
+  integrity sha1-Wyn2qB9wcXFC4J52W76rl7T4HiE=
 
 pluralize@8.0.0, pluralize@^8.0.0:
   version "8.0.0"
