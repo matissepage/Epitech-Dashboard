@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router";
+import { localGetLogin, localLogin } from "../../services/auth/auth";
 
 export interface IUserForm {
     username: string,
@@ -17,6 +19,7 @@ export const useForm = (callback: (submit: boolean) => void, validate: (values: 
     const [values, setValues] = useState (userForm);
     const [errors, setErrors] = useState<IUserForm>(userForm);
     const [isSubmitting, setSubmitting] = useState(false);
+    const history = useHistory();
 
     const handleChange = (e: { target: { name: string; value: string; }; }) => {
         const {name, value} = e.target
@@ -27,10 +30,29 @@ export const useForm = (callback: (submit: boolean) => void, validate: (values: 
     };
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-        setErrors(validate(values))
-        setSubmitting(true);
-        callback(true);
+      e.preventDefault();
+      setErrors(validate(values))
+      setSubmitting(true);
+      callback(true);
+      localLogin(values.username, values.password, values.email)
+        .then((res) => {
+          console.log(res);
+          history.push("/home");
+        })
+        .catch((err) => console.error(err));
+    }
+
+    const handleSubmitLogin = (e: { preventDefault: () => void; }) => {
+      e.preventDefault();
+      setErrors(validate(values))
+      setSubmitting(true);
+      callback(true);
+      localGetLogin(values.username, values.password)
+        .then((res) => {
+          console.log(res);
+          history.push("/home");
+        })
+        .catch((err) => console.error(err));
     }
 
     useEffect (
@@ -42,5 +64,5 @@ export const useForm = (callback: (submit: boolean) => void, validate: (values: 
         [errors]
     );
 
-    return { handleChange, values, handleSubmit, errors };
+    return { handleChange, values, handleSubmit, errors, handleSubmitLogin };
 }

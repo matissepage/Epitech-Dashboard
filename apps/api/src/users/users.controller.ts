@@ -1,4 +1,4 @@
-import { Controller, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Request, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import {
   Crud,
@@ -21,6 +21,24 @@ export class UsersController {
 
   get base(): CrudController<User | UserDTO> {
     return this;
+  }
+
+  @Get('/login/:username/:password')
+  async loginUser(
+    @Param('username') username,
+    @Param('password') password,
+  ) {
+    const res = await this.service.getOneUser(username, password)
+    if (res === undefined) {
+      return {
+        statusCode: 500,
+        message: 'Username or password is incorrect',
+      };
+    }
+    return {
+      statusCode: 200,
+      ...res
+    };
   }
 
   @Override('createOneBase')
