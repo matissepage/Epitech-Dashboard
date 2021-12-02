@@ -98,4 +98,22 @@ export class AuthController {
         '&provider=discord',
     };
   }
+
+  // Gitlab Connection
+  @Get('/gitlab')
+  @UseGuards(AuthGuard('gitlab'))
+  async gitlabAuth(@Req() req: Request) {}
+
+  @Get('/gitlab/redirect')
+  @UseGuards(AuthGuard('gitlab'))
+  @Redirect()
+  gitlabAuthCallback(@Req() req: Request) {
+    const body = this.authService.gitlabLogin(req);
+    return {
+      url:
+        'http://localhost:3000/auth/success?access_token=' +
+        body.user.accessToken +
+        '&provider=gitlab',
+    };
+  }
 }

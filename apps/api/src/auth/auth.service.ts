@@ -63,4 +63,16 @@ export class AuthService {
       user: req.user,
     };
   }
+
+  gitlabLogin(req: Request): { message: string; user: any } {
+    if (!req.user)
+      return {
+        message: 'no user for gitlab',
+        user: {},
+      };
+    return {
+      message: 'User information from gitlab',
+      user: req.user,
+    };
+  }
 }

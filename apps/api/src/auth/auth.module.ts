@@ -3,6 +3,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { DiscordStrategy } from './discord.strategy';
 import { GithubStrategy } from './github.strategy';
+import { Gitlabtrategy } from './gitlab.strategy';
 import { GoogleStrategy } from './google.strategy';
 import { LinkedinStrategy } from './linkedin.strategy';
 import { SpotidyStrategy } from './spotify.strategy';
@@ -16,6 +17,7 @@ import { SpotidyStrategy } from './spotify.strategy';
     SpotidyStrategy,
     LinkedinStrategy,
     DiscordStrategy,
+    Gitlabtrategy,
   ],
 })
 export class AuthModule {}
