@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { SideBar } from '../../Components/Sidebar/Sidebar';
 import styled from 'styled-components';
 import { TopBar } from '../../Components/TopBar/Topbar';
@@ -95,6 +95,7 @@ export const TradingViewPage = () => {
       setwidget([...widget, widgetsAvailable[5]])
     else
       setwidget([...widget, widgetsAvailable[5]])
+    localStorage.setItem('widgets_trading', JSON.stringify(widget))
   }
 
   const renderList =(item: any, index:any) => (
@@ -105,6 +106,17 @@ export const TradingViewPage = () => {
       </WidgetItem>
     </div>
   )
+
+  useEffect(() => {
+    const listSave = JSON.parse(localStorage.getItem('widgets_trading') || '[]');
+    for (const item of listSave) {
+      for (const widgetAvailable of widgetsAvailable) {
+        if (item.title === widgetAvailable.title) {
+          setwidget(widget => [...widget, widgetAvailable]);
+        }
+      }
+    }
+  }, [])
 
   return (
     <>
