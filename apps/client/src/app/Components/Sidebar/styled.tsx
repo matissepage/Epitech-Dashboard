@@ -65,7 +65,7 @@ export const SidebarLabel = styled.span`
   margin-left: 1rem;
 `;
 
-export const DropdownLink = styled(Link)`
+export const DropdownLink = styled.button`
   display: flex;
   justify-content: flex-start;
   align-items: center;

@@ -1,11 +1,5 @@
 import React, {useRef} from 'react'
-import {
-  Button,
-  Container,
-  Badge,
-  Content,
-  Footer
-} from './styled';
+import './a.css'
 
 const clickOutsideRef = (content_ref: any, toggle_ref: any) => {
   document.addEventListener('mousedown', (e) => {
@@ -25,32 +19,24 @@ export const Dropdown = (props:any) => {
   const dropdown_content_el = useRef(null)
 
   clickOutsideRef(dropdown_content_el, dropdown_toggle_el)
-    
+  
   return (
-    <Container>
-      <Button>
-        {
-          props.icon ? <i className={props.icon}></i> : ''
-        }
-        {
-          props.badge ? <Badge >{props.badge}</Badge> : ''
-        }
-        {
-          props.customToggle ? props.customToggle() : ''
-        }
-      </Button>
-      <Content ref={dropdown_content_el}>
-        {
-          props.contentData && props.renderItems ? props.contentData.map((item:any, index:any) => props.renderItems(item, index)) : ''
-        }
+    <div className='dropdown'>
+      <button ref={dropdown_toggle_el} className="dropdown__toggle">
+        {props.icon ? <i>{props.icon}</i> : ''}
+        {props.badge ? <span className='dropdown__toggle-badge'>{props.badge}</span> : ''}
+        {props.customToggle ? props.customToggle() : ''}
+      </button>
+      <div ref={dropdown_content_el} className="dropdown__content">
+        {props.contentData && props.renderItems ? props.contentData.map((item:any, index:any) => props.renderItems(item, index)) : ''}
         {
           props.renderFooter ? (
-            <Footer>
+            <div className="dropdown__footer">
               {props.renderFooter()}
-            </Footer>
+            </div>
           ) : ''
         }
-      </Content>
-    </Container>
+      </div>
+    </div>
   )
 }

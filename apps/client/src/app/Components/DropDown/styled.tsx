@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Container = styled.div `
   position: relative;
   z-index: 99;
@@ -11,11 +10,13 @@ export const Button = styled.button`
   outline: 0;
   background-color: transparent;
   position: relative;
-  &:i {
-    font-size: 2.5rem;
-    color: var(--txt-color2);
-  }
 `
+
+export const Icon = styled.i`
+  font-size: 2.5rem;
+  color: var(--txt-color2);
+`
+
 export const Badge = styled.span`
   display: flex;
   align-items: center;
@@ -49,6 +50,11 @@ export const Content = styled.div`
     transition: transform 0.5s var(--transition-cubic);
   }
 `
+
+const ActiveButton = styled(Content)`
+  transform: scale(1);
+  transition: transform 0.5s var(--transition-cubic);
+`;
 
 export const Footer = styled.div`
   padding: 20px;

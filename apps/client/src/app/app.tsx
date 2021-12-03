@@ -4,6 +4,10 @@ import { FormCreate } from './Components/Form/Form'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { HomePage } from './Pages/HomePage/HomePage';
 import { LoginSucess } from './Components/LoginSuccess/LoginSuccess';
+import { GithubPage } from './Pages/Github/Github';
+import { GooglePage } from './Pages/Google/Google';
+import { SpotifyPage } from './Pages/Spotify/Spotify';
+import { TradingViewPage } from './Pages/TradingView/TradingView';
 
 const StyledApp = styled.div`
   box-sizing: border-box;
@@ -28,6 +32,10 @@ export function App() {
             <FormCreate type="SignIn"/>
           </Route>
           <Route exact path='/home' component={HomePage} />
+          <Route exact path='/google' component={GooglePage} />
+          <Route exact path='/github' component={GithubPage} />
+          <Route exact path='/spotify' component={SpotifyPage} />
+          <Route exact path='/trading' component={TradingViewPage} />
         </Switch>
     </Router>
     </StyledApp>

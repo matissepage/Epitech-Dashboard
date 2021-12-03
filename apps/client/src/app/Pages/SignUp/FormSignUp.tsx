@@ -1,19 +1,27 @@
 import React from 'react';
 import { useForm } from '../../Components/Form/useForm';
 import validate from '../../Components/Form/validateInfo';
-import * as Styled from '../../Components/Form/styled';
-import { IUserForm } from '../../Components/Form/useForm';
+import {
+  FormContentRight,
+  Form,
+  FormH1,
+  FormInputs,
+  FormInput,
+  FormLabel,
+  FormInputBtn,
+  FormInputLogin,
+} from '../../Components/Form/styled';
 
 export const FormSignUp = ({submitForm}: {submitForm:any}) => {
   const {handleChange, values, handleSubmit, errors } = useForm(submitForm, validate);
 
   return (
-    <Styled.FormContentRight>
-      <Styled.Form onSubmit={handleSubmit}>
-        <Styled.FormH1>Create your account ! </Styled.FormH1>
-        <Styled.FormInputs>
-          <Styled.FormLabel htmlFor="username">Username : </Styled.FormLabel>
-            <Styled.FormInput
+    <FormContentRight>
+      <Form onSubmit={handleSubmit}>
+        <FormH1>Create your account ! </FormH1>
+        <FormInputs>
+          <FormLabel htmlFor="username">Username : </FormLabel>
+            <FormInput
             id="username"
             type="text"
             name="username"
@@ -22,10 +30,10 @@ export const FormSignUp = ({submitForm}: {submitForm:any}) => {
             onChange={handleChange}
             />
             {errors.username && <p>{errors.username}</p>}
-        </Styled.FormInputs>
-        <Styled.FormInputs>
-          <Styled.FormLabel htmlFor="email">Email : </Styled.FormLabel>
-            <Styled.FormInput
+        </FormInputs>
+        <FormInputs>
+          <FormLabel htmlFor="email">Email : </FormLabel>
+            <FormInput
             id="email"
             type="email"
             name="email"
@@ -34,10 +42,10 @@ export const FormSignUp = ({submitForm}: {submitForm:any}) => {
             onChange={handleChange}
             />
             {errors.email && <p>{errors.email}</p>}
-        </Styled.FormInputs>
-        <Styled.FormInputs>
-          <Styled.FormLabel htmlFor="password" className='form-label'>Password : </Styled.FormLabel>
-            <Styled.FormInput
+        </FormInputs>
+        <FormInputs>
+          <FormLabel htmlFor="password" className='form-label'>Password : </FormLabel>
+            <FormInput
               id="password"
               type="password"
               name="password"
@@ -46,10 +54,10 @@ export const FormSignUp = ({submitForm}: {submitForm:any}) => {
               onChange={handleChange}
             />
             {errors.password && <p>{errors.password}</p>}
-        </Styled.FormInputs>
-        <Styled.FormInputs>
-          <Styled.FormLabel htmlFor="password2" className='form-label'>Confirm your password : </Styled.FormLabel>
-            <Styled.FormInput
+        </FormInputs>
+        <FormInputs>
+          <FormLabel htmlFor="password2" className='form-label'>Confirm your password : </FormLabel>
+            <FormInput
             id="password2"
             type="password"
             name="password2"
@@ -59,10 +67,10 @@ export const FormSignUp = ({submitForm}: {submitForm:any}) => {
             onChange={handleChange}
             />
             {errors.password2 && <p>{errors.password2}</p>}
-        </Styled.FormInputs>
-        <Styled.FormInputBtn type="submit">Sign up</Styled.FormInputBtn>
-        <Styled.FormInputLogin>Already have an account ? Login <a href='signin'>here</a></Styled.FormInputLogin>
-      </Styled.Form>
-    </Styled.FormContentRight>
+        </FormInputs>
+        <FormInputBtn type="submit">Sign up</FormInputBtn>
+        <FormInputLogin>Already have an account ? Login <a href='signin'>here</a></FormInputLogin>
+      </Form>
+    </FormContentRight>
   )
 }

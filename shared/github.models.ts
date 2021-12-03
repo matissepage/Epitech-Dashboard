@@ -22,9 +22,11 @@ export type GithubProfil = {
   public_repos: number;
   public_gists: number;
   followers: number;
-  following: string;
+  following: number;
   created_at: Date;
   updated_at: Date;
+  name: string;
+  location: string;
   bio?: string;
 }
 

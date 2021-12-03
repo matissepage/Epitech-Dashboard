@@ -1,11 +1,13 @@
 import styled from "styled-components";
+import { Rnd } from 'react-rnd';
 
 export const WidgetCard = styled.div`
   padding: 30px;
-  height: 50px;
+  height: fit-content;
   width: 300px;
   display: flex;
   align-items: center;
+  flex-direction: column;
   background-color: var(--second-bg);
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -56,4 +58,21 @@ export const WidgetCardInfo = styled.div`
   text-align: center;
   z-index: 1;
   text-transform: capitalize;
+`
+
+export const WidgetCardContent = styled.span`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  z-index: 1;
+`
+
+export const WidgetCardTop = styled.div`
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 10px;
+  width: 100%;
+  z-index: 1;
 `
