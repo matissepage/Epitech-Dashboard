@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import phone from './../../../assets/Form/phone.svg';
 import Draggable, { DraggableCore } from 'react-draggable';
 import { SideBar } from '../../Components/Sidebar/Sidebar';
@@ -83,6 +83,7 @@ export const GithubPage = () => {
       setwidget([...widget, widgetsAvailable[1]])
     else if (title === "Github Profile")
       setwidget([...widget, widgetsAvailable[2]])
+    localStorage.setItem('widgets_github', JSON.stringify(widget));
   }
 
   const renderList =(item: any, index:any) => (
@@ -93,6 +94,18 @@ export const GithubPage = () => {
       </WidgetItem>
     </div>
   )
+
+  useEffect(() => {
+    const listSave = JSON.parse(localStorage.getItem('widgets_github') || '[]');
+    for (const item of listSave) {
+      console.log(item);
+      for (const widgetAvailable of widgetsAvailable) {
+        if (item.title === widgetAvailable.title) {
+          setwidget(widget => [...widget, widgetAvailable]);
+        }
+      }
+    }
+  }, [])
 
   return (
     <>

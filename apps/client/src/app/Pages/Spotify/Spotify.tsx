@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import phone from './../../../assets/Form/phone.svg';
 import Draggable, { DraggableCore } from 'react-draggable';
 import { SideBar } from '../../Components/Sidebar/Sidebar';
@@ -86,6 +86,7 @@ export const SpotifyPage = () => {
       setwidget([...widget, widgetsAvailable[1]])
     else if (title === "Listen")
       setwidget([...widget, widgetsAvailable[2]])
+    localStorage.setItem('widgets_spotify', JSON.stringify(widget))
   }
 
   const renderList =(item: any, index:any) => (
@@ -96,6 +97,17 @@ export const SpotifyPage = () => {
       </WidgetItem>
     </div>
   )
+
+  useEffect(() => {
+    const listSave = JSON.parse(localStorage.getItem('widgets_spotify') || '[]');
+    for (const item of listSave) {
+      for (const widgetAvailable of widgetsAvailable) {
+        if (item.title === widgetAvailable.title) {
+          setwidget(widget => [...widget, widgetAvailable]);
+        }
+      }
+    }
+  }, [])
 
   return (
     <>
