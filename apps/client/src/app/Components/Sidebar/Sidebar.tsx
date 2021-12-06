@@ -31,11 +31,14 @@ const LoginOauthContainer = styled.div`
   justify-content: center;
   display: flex;
   flex-direction: row;
-  padding-top : 600px;
+  position:fixed;
+  bottom: 1%;
+  right: 1%;
+  z-index: 9999;
   padding-left: 10px;
   position: absolute;
   flex-wrap: wrap;
-  width: 90%;
+  width: 100%;
 `
 
 interface LoginSSO {
