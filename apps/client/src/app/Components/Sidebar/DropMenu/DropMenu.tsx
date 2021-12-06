@@ -29,7 +29,7 @@ export const Submenu: FC<SidebarLinkProps> = ({ item }) => {
     <>
       <Styled.SidebarLink to={item.path} onClick={showSubnav}>
         <div>
-          {item.icon}
+          {React.createElement(item.icon)}
             <Styled.SidebarLabel>{item.title}</Styled.SidebarLabel>
         </div>
         <div>{item?.subnav && subnav ? item?.iconOpened : item?.iconClosed}</div>
