@@ -17,7 +17,8 @@
     "client:test": "yarn nx run client:test",
     "client:clean": "rm -rf ./dist/apps/client",
     "client-e2e:start": "yarn nx run client-e2e:e2e",
-    "client-e2e:lint": "yarn nx run client-e2e:lint"
+    "client-e2e:lint": "yarn nx run client-e2e:lint",
+    "api:doc": "npx @compodoc/compodoc -p ./apps/api/tsconfig.json -s"
   },
   "private": true,
   "dependencies": {
