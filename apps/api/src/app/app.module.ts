@@ -8,6 +8,7 @@ import { GithubModule } from '../github/github.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { SpotifyModule } from '../spotify/spotify.module';
 
 config();
 @Module({
@@ -24,6 +25,7 @@ config();
     AuthModule,
     UsersModule,
     GithubModule,
+    SpotifyModule,
   ],
   controllers: [AppController],
   providers: [AppService],

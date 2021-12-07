@@ -19,4 +19,12 @@ export class UsersService extends TypeOrmCrudService<User> {
     };
     return this.jwtService.sign(payload);
   }
+
+  // Get one user with username and password
+  async getOneUser(username: string, password: string): Promise<User> {
+    
+    return await this.repo.findOne({
+      where: { username, password },
+    });
+  }
 }

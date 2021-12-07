@@ -1,25 +1,11 @@
-import React from 'react';
-import phone from './../../../assets/Form/phone.svg';
-import * as Styled from '../../Components/Form/styled';
-import Draggable, { DraggableCore } from 'react-draggable';
+import React from 'react'
 import { SideBar } from '../../Components/Sidebar/Sidebar';
 import styled from 'styled-components';
-import { Widget } from '../../Components/WidgetCard/WidgetCard';
-import {
-  AiFillCaretDown,
-  AiFillCaretUp,
-  AiFillGoogleCircle,
-  AiFillGithub,
-} from 'react-icons/ai';
 import { TopBar } from '../../Components/TopBar/Topbar';
-import { GithubFollowers } from '../../Components/Github/Followers/GithubFollowers';
-import { GithubRepositorys } from '../../Components/Github/Repository/GithubRepo';
-import { GithubProfile } from '../../Components/Github/Profil/Profil';
-import { GoogleMapWidget } from '../../Components/Google/GoogleMap/GoogleMap';
 
 const Container = styled.div`
-  padding-left: var(--sidebar-width);
-`;
+  padding-left: 500px;
+`
 
 export const HomePage = () => {
   return (
@@ -27,47 +13,8 @@ export const HomePage = () => {
       <SideBar />
       <Container>
         <TopBar />
-        <Draggable>
-          <div>
-            <Widget
-              icon={AiFillGithub}
-              count="Repository"
-              title="Github Services"
-              child={GithubRepositorys}
-            />
-          </div>
-        </Draggable>
-        <Draggable>
-          <div>
-            <Widget
-              icon={AiFillGithub}
-              count="Profil"
-              title="Github Services"
-              child={GithubProfile}
-            />
-          </div>
-        </Draggable>
-        <Draggable>
-          <div>
-            <Widget
-              icon={AiFillGithub}
-              count="Commit"
-              title="Github Services"
-              child={GithubFollowers}
-            />
-          </div>
-        </Draggable>
-        <Draggable>
-          <div>
-            <Widget
-              icon={AiFillGoogleCircle}
-              count="Commit"
-              title="Github Services"
-              child={GoogleMapWidget}
-            />
-          </div>
-        </Draggable>
+          Please Login
       </Container>
     </>
-  );
-};
+  )
+}
