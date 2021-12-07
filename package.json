@@ -21,6 +21,7 @@
   },
   "private": true,
   "dependencies": {
+    "@compodoc/compodoc": "^1.1.16",
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.1.1",
