@@ -21,6 +21,7 @@ import {
   Add,
   WidgetItem
 } from '../styled'
+import { GoogleMapWidget } from '../../Components/Google/GoogleMap/GoogleMap';
 
 interface Widget {
   title: string
@@ -34,7 +35,7 @@ const widgetsAvailable: Widget[] = [
     title: 'Google Maps',
     count: 'Widget',
     icon: AiFillGoogleCircle,
-    content: GithubFollowers,
+    content: GoogleMapWidget,
   },
   {
     title: 'Youtube',

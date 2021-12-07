@@ -11,25 +11,26 @@ import { GrLocation } from 'react-icons/gr';
 export const GithubProfile = (): JSX.Element => {
   const [name, setName] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
-  const [profil, setProfil] = useState<GithubProfil>()
+  const [profil, setProfil] = useState<GithubProfil>();
 
-  const getProfilData =  (): void => {
-    if (name === '' || name === undefined || !name)
-      return;
+  const getProfilData = (): void => {
+    if (name === '' || name === undefined || !name) return;
     getGithubProfil(name)
-      .then(res => {
+      .then((res) => {
         setProfil(res);
         setLoading(false);
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   };
 
-  return(
+  return (
     <Container>
-      <Form onSubmit={(e) => {
-        e.preventDefault();
-        getProfilData();
-      }}>
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault();
+          getProfilData();
+        }}
+      >
         <label>
           <NameInput
             type="text"
@@ -38,10 +39,10 @@ export const GithubProfile = (): JSX.Element => {
             value={name}
           />
         </label>
-        <input type='submit' value='search' />
+        <input type="submit" value="search" />
       </Form>
       <h1>Github Profil</h1>
-      { profil !== undefined &&      
+      {profil !== undefined && (
         <Content>
           <Header>
             <MyLink href={profil.html_url} target="_blank">
@@ -51,14 +52,26 @@ export const GithubProfile = (): JSX.Element => {
             <LoginName>{profil?.login}</LoginName>
             <Bio>{profil?.bio}</Bio>
             <Stats>
-              <p>{React.createElement(GiShadowFollower)} {profil?.followers} followers  </p>
-              <p>{React.createElement(MdFollowTheSigns)} {profil?.following} following </p>
-              <p>{React.createElement(GoRepo)} {profil?.public_repos}</p>
+              <p>
+                {React.createElement(GiShadowFollower)} {profil?.followers}{' '}
+                followers{' '}
+              </p>
+              <p>
+                {React.createElement(MdFollowTheSigns)} {profil?.following}{' '}
+                following{' '}
+              </p>
+              <p>
+                {React.createElement(GoRepo)} {profil?.public_repos}
+              </p>
             </Stats>
-            { profil?.location && <p style={{marginTop: '15px'}} >{React.createElement(GrLocation)} {profil.location}</p>}
+            {profil?.location && (
+              <p style={{ marginTop: '15px' }}>
+                {React.createElement(GrLocation)} {profil.location}
+              </p>
+            )}
           </Header>
         </Content>
-      }
+      )}
     </Container>
   );
 };
@@ -66,7 +79,8 @@ export const GithubProfile = (): JSX.Element => {
 const Container = styled.div`
   margin: 10px;
   width: 100%;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 `;
 
 const NameInput = styled.input`
@@ -74,40 +88,40 @@ const NameInput = styled.input`
   height: 15px;
   border-color: transparent;
   border-radius: 5px;
-`
+`;
 
 const Form = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-`
+`;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 15px;
-`
+`;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-`
+`;
 
 const Logo = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 50%;
-`
+`;
 
 const Name = styled.p`
   font-size: 26px;
   line-height: 1.25;
   font-weight: 600;
-`
+`;
 
 const LoginName = styled.p`
   font-size: 20px;
@@ -115,13 +129,13 @@ const LoginName = styled.p`
   font-weight: 300;
   line-height: 24px;
   color: #768390;
-`
+`;
 
 const Bio = styled.p`
   padding-top: 15px;
   font-size: 16px;
   text-align: center;
-`
+`;
 
 const Stats = styled.div`
   width: 100%;
@@ -132,7 +146,7 @@ const Stats = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-`
+`;
 
 const MyLink = styled.a`
   text-decoration: none;
