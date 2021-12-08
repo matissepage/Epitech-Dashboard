@@ -13,9 +13,13 @@ import { DashBoardResponse } from './../../../../shared/DashboardResponse.model'
 export class GithubService {
   constructor(private httpService: HttpService) {}
 
-  getFollowers(id: string): Observable<DashBoardResponse<GithubFollower[]>> {
+  getFollowers(id: string, token: string): Observable<DashBoardResponse<GithubFollower[]>> {
     return this.httpService
-      .get<GithubFollower[]>(`https://api.github.com/users/${id}/followers`)
+      .get<GithubFollower[]>(`https://api.github.com/users/${id}/followers`, {
+        headers: {
+          Authorization: `token ${token}`,
+        },
+      })
       .pipe(
         map((res) => {
           const response: DashBoardResponse<GithubFollower[]> = {
@@ -28,9 +32,13 @@ export class GithubService {
       );
   }
 
-  getFollowings(id: string): Observable<DashBoardResponse<GithubFollower[]>> {
+  getFollowings(id: string, token: string): Observable<DashBoardResponse<GithubFollower[]>> {
     return this.httpService
-      .get<GithubFollower[]>(`https://api.github.com/users/${id}/following`)
+      .get<GithubFollower[]>(`https://api.github.com/users/${id}/following`, {
+        headers: {
+          Authorization: `token ${token}`,
+        },
+      })
       .pipe(
         map((res) => {
           const response: DashBoardResponse<GithubFollower[]> = {
@@ -43,9 +51,13 @@ export class GithubService {
       );
   }
 
-  getProfil(id: string): Observable<DashBoardResponse<GithubProfil>> {
+  getProfil(id: string, token: string): Observable<DashBoardResponse<GithubProfil>> {
     return this.httpService
-      .get<GithubProfil>(`https://api.github.com/users/${id}`)
+      .get<GithubProfil>(`https://api.github.com/users/${id}`, {
+        headers: {
+          Authorization: `token ${token}`,
+        },
+      })
       .pipe(
         map((res) => {
           if (res.data.login === undefined) {
@@ -67,9 +79,13 @@ export class GithubService {
       );
   }
 
-  getUserRepos(id: string): Observable<DashBoardResponse<GithubRepo[]>> {
+  getUserRepos(id: string, token: string): Observable<DashBoardResponse<GithubRepo[]>> {
     return this.httpService
-      .get<GithubRepo[]>(`https://api.github.com/users/${id}/repos`)
+      .get<GithubRepo[]>(`https://api.github.com/users/${id}/repos`, {
+        headers: {
+          Authorization: `token ${token}`,
+        },
+      })
       .pipe(
         map((res) => {
           if (res.data === []) {
@@ -93,10 +109,15 @@ export class GithubService {
 
   getSearchRepo(
     id: string,
-    repoName: string
+    repoName: string,
+    token: string
   ): Observable<DashBoardResponse<GithubRepo>> {
     return this.httpService
-      .get<GithubRepo>(`https://api.github.com/repos/${id}/${repoName}`)
+      .get<GithubRepo>(`https://api.github.com/repos/${id}/${repoName}`, {
+        headers: {
+          Authorization: `token ${token}`,
+        },
+      })
       .pipe(
         map((res) => {
           if (res === undefined) {

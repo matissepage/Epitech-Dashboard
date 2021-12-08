@@ -14,7 +14,7 @@ export const getFollows = async (
     try {
       axios
         .get<DashBoardResponse<GithubFollower[]>>(
-          `http://localhost:8080/github/user/${id}/${type}`
+          `http://localhost:8080/github/user/${id}/${type}/${localStorage.getItem('access_token_github')}`
         )
         .then((response) => {
           if (response.data.statusCode !== 200) {
@@ -34,7 +34,7 @@ export const getRepositorys = async (id: string): Promise<GithubRepo[]> => {
     try {
       axios
         .get<DashBoardResponse<GithubRepo[]>>(
-          `http://localhost:8080/github/user/${id}/repos`
+          `http://localhost:8080/github/user/${id}/repos/${localStorage.getItem('access_token_github')}`
         )
         .then((response) => {
           if (response.data.statusCode !== 200)
@@ -53,7 +53,7 @@ export const getGithubProfil = async (id: string): Promise<GithubProfil> => {
     if (id === ' ' || !id) reject(new Error('bad id'));
     axios
       .get<DashBoardResponse<GithubProfil>>(
-        `http://localhost:8080/github/user/${id}`
+        `http://localhost:8080/github/user/${id}/${localStorage.getItem('access_token_github')}`
       )
       .then((res) => {
         if (res.data.statusCode !== 200) {
