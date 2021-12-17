@@ -9,8 +9,8 @@
 '>
   <p align="center">
     <img width="285px" src='./assets/intro.gif' alt='gif'>
-    <img width="285px" src='./assets/mid.gif' alt='gif'>
-    <img width="285px" src='./assets/end.gif' alt='gif'>
+    <img width="285px" src='./assets/widget.gif' alt='gif'>
+    <img width="575px" src='./assets/mid.gif' alt='gif'>
   </p>
 </div>
 
