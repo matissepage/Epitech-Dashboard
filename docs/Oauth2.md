@@ -14,6 +14,15 @@ GITHUB_CALLBACK_URL=http://localhost:8080/auth/github/redirect
 SPOTIFY_CLIENT_ID=
 SPOTIFY_CLIENT_SECRET=
 SPOTIFY_CALLBACK_URL=http://localhost:8080/auth/spotify/redirect
+LINKEDIN_CLIENT_ID=
+LINKEDIN_CLIENT_SECRET=
+LINKEDIN_CALLBACK_URL=http://localhost:8080/auth/linkedin/redirect
+DISCORD_CLIENT_ID=
+DISCORD_CLIENT_SECRET=
+DISCORD_CALLBACK_URL=http://localhost:8080/auth/discord/redirect
+GITLAB_CLIENT_ID=
+GITLAB_CLIENT_SECRET=
+GITLAB_CALLBACK_URL=http://localhost:8080/auth/gitlab/redirect
 ```
 
 [Google auth](https://console.cloud.google.com/apis/dashboard)
